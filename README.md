@@ -20,17 +20,11 @@ pareadas, testes das hipóteses pré-especificadas e análise de sensibilidade.
 ## Reprodução rápida
 
 ```bash
-git clone <endereço deste repositório>
-cd simulador-cold-start
-python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-pytest                      # 47 testes com dados sintéticos (segundos)
 ./reproduzir.sh             # todas as etapas; requer os dados em Dados/
 ```
 
-Os dados do Inside Airbnb não estão no repositório (veja `Dados/LEIA-ME.txt`). Os resultados usados
-no artigo estão em `resultados/` e podem ser conferidos sem rodar a simulação.
-
+Os dados do Inside Airbnb não estão no repositório (veja `Dados/LEIA-ME.txt`).
 ## Licença
 
 Código sob a licença MIT (arquivo `LICENSE`). Os dados do Inside Airbnb são distribuídos pelo
@@ -42,8 +36,6 @@ Requer Python 3.10 ou superior.
 
 ```bash
 cd simulador-cold-start
-python -m venv .venv
-source .venv/bin/activate        # no fish: source .venv/bin/activate.fish
 pip install -r requirements.txt
 ```
 
