@@ -1,0 +1,53 @@
+\begin{table}[ht]
+\centering
+\caption{Auditoria dos dados do Inside Airbnb (São Paulo)}
+\label{tab:auditoria}
+\begin{tabular}{lrrr}
+\hline
+\textbf{Grupo} & \textbf{Indicador} & \textbf{Valor} & \textbf{Observação} \\
+\hline
+Coleta & Data da coleta (scrape\_id) & 2026-06-14 &  \\
+Coleta & Anúncios atualizados em 2026-06-14 & 6.284 & last\_scraped \\
+Coleta & Anúncios atualizados em 2026-06-15 & 19.512 & last\_scraped \\
+Coleta & Anúncios atualizados em 2026-06-16 & 16.558 & last\_scraped \\
+Coleta & Anúncios & 42.354 &  \\
+Coleta & Fornecedores (anfitriões) & 15.840 &  \\
+Coleta & host\_since vazio (\%) & 100,00 &  \\
+Fornecedores & Sem nenhuma avaliação (\%) & 16,16 &  \\
+Fornecedores & Com até três avaliações (\%) & 26,74 &  \\
+Fornecedores & Mediana de avaliações & 21,00 &  \\
+Fornecedores & Nota média & 4,85 & média das notas dos anúncios \\
+Fornecedores & Desvio padrão da nota & 0,32 &  \\
+Fornecedores & Mediana da nota & 4,93 &  \\
+Fornecedores & Nota maior ou igual a 4,8 (\%) & 80,49 &  \\
+Fornecedores & Avaliações nos 10\% maiores (\%) & 69,02 &  \\
+Fornecedores & Sem preço em todos os anúncios & 264 &  \\
+Fornecedores & Com um único anúncio & 11.459 & população padrão da simulação \\
+Fornecedores & Com um único anúncio e preço & 11.203 &  \\
+Fornecedores & Avaliações por mês, últimos 12 meses: média & 3,67 & todos os anfitriões com 12 meses ou mais \\
+Fornecedores & Avaliações por mês, últimos 12 meses: mediana & 0,75 &  \\
+Reconstrução da entrada & Fornecedores no teto de 15 anos & 23 & hosts\_time\_as\_host\_years = 15 \\
+Reconstrução da entrada & Tempo de cadastro divergente entre anúncios & 0 &  \\
+Reconstrução da entrada & Entrada mais antiga reconstruída & 2011-01-13 &  \\
+Reconstrução da entrada & Cadastro antes da 1ª avaliação, por fornecedor (\%) & 74,85 &  \\
+Reconstrução da entrada & Cadastro antes da 1ª avaliação, por anúncio (\%) & 90,00 & o texto original afirmava 99,5\% \\
+Entrada de fornecedores & Média histórica de entradas por mês & 85,62 & sobreviventes / meses desde a entrada mais antiga \\
+Entrada de fornecedores & Taxa histórica mensal (\%) & 0,54 &  \\
+Entrada de fornecedores & Entradas em 2025 (sobreviventes) & 2.957 &  \\
+Entrada de fornecedores & Taxa mensal em 2025 (\%) & 1,56 &  \\
+Primeira avaliação & Sem avaliação nos primeiros 24 meses (\%) & 39,40 & coorte com pelo menos 24 meses, sem teto \\
+Primeira avaliação & Mediana até a 1ª avaliação (dias) & 47,00 & avaliados na janela, intervalo não negativo \\
+Primeira avaliação & Mediana até a 1ª avaliação, definição do texto original (dias) & 89,00 & todos os avaliados da coorte; o texto original citava 88 dias \\
+Arquivo reviews & Avaliações & 1.577.515 &  \\
+Arquivo reviews & Período & 2011-04-19 a 2026-06-16 &  \\
+Arquivo reviews & first\_review igual à 1ª data em reviews (\%) & 100,00 &  \\
+Arquivo reviews & number\_of\_reviews igual à contagem em reviews (\%) & 100,00 &  \\
+Arquivo calendar & Janela & 2026-06-14 a 2027-06-15 &  \\
+Arquivo calendar & Anúncios de listings cobertos (\%) & 100,00 &  \\
+Arquivo calendar & Anúncios só no calendário & 24 &  \\
+Arquivo calendar & Distância entre início e data da coleta (dias) & 0 & deve ser 0 ou próximo de 0 \\
+Arquivo calendar & Dias indisponíveis (\%) & 28,44 & inclui reservas e bloqueios do anfitrião \\
+Arquivo calendar & Mediana de dias indisponíveis por anúncio (\%) & 13,97 &  \\
+\hline
+\end{tabular}
+\end{table}

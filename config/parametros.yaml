@@ -51,6 +51,7 @@ projeto:
   clientes_por_rodada: null      # demanda: calibrada na etapa 2 (null = usar a calibração)
 
 simulacao:
+  politicas: [A, B, B2, C, D]    # experimento principal; B2 = média posterior Beta (análise adicional)
   politica_referencia: D         # prática atual (calibração, validação e aquecimento): D = reputação
                                  # com impulso a novatos (Haldar et al., 2020); B = reputação pura
   aquecimento: 24                # rodadas sob a política de referência antes da ramificação
@@ -83,6 +84,10 @@ protocolo:
   comparacoes_primarias:
     - [C, B]
     - [D, B]
+  # análises adicionais pedidas na revisão; descritivas, não alteram H1 a H4
+  comparacoes_adicionais:
+    - [C, B2]                    # efeito da exploração (mesmo sinal de C, sem sorteio)
+    - [B2, B]                    # efeito do sinal (contratações por exame em vez de estrelas)
   repeticoes_minimas: 30
   alfa: 0.05
   correcao_multiplicidade: holm

@@ -53,3 +53,21 @@ coorte de 12 a 23 meses sem avaliação), mas subestima a demanda dos novatos j�
 efeito das políticas de exploração. A análise de sensibilidade em γ (viés de posição) e τ
 (sensibilidade da escolha), os dois parâmetros que controlam o peso do ranking, mostra quanto as
 conclusões dependem dessa limitação.
+
+---
+
+# Análise adicional após a revisão: política B2
+
+Pedida no parecer do orientador (outubro de 2026), **depois** de observados os resultados do
+experimento principal. Não é uma emenda pré-especificada: é uma análise adicional, descritiva,
+declarada como tal. Hipóteses, métricas primárias, margem δ e comparações primárias (C vs B,
+D vs B) permanecem inalteradas.
+
+**Motivo.** C e B diferem em dois aspectos ao mesmo tempo: o sinal (contratações por exame em C,
+estrelas em B) e a exploração (sorteio da distribuição Beta em C). C vs B não isola o efeito da
+exploração.
+
+**Alteração.** A política B2 ordena pela média posterior (α₀ + Hᵢ) / (α₀ + β₀ + Eᵢ), com os
+mesmos dados e a mesma priori de C, sem sorteio. A diferença C − B é decomposta, por semente, em
+(C − B2), efeito da exploração, e (B2 − B), efeito do sinal. B2 não consome números aleatórios,
+de modo que os resultados de A, B, C e D não se alteram.

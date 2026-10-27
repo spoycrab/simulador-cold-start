@@ -80,8 +80,17 @@ def validar_config(config: dict) -> None:
         erros.append("calibracao.max_anuncios_por_fornecedor deve ser inteiro >= 1 ou null.")
     sim = config.get("simulacao")
     if sim is not None:
-        if sim.get("politica_referencia", "D") not in {"A", "B", "C", "D"}:
-            erros.append("simulacao.politica_referencia deve ser A, B, C ou D.")
+        validas = {"A", "B", "B2", "C", "D"}
+        if sim.get("politica_referencia", "D") not in validas:
+            erros.append("simulacao.politica_referencia deve ser A, B, B2, C ou D.")
+        politicas = sim.get("politicas", ["A", "B", "C", "D"])
+        if not set(politicas) <= validas:
+            erros.append("simulacao.politicas deve conter apenas A, B, B2, C e D.")
+        protocolo_sim = {x for par in protocolo["comparacoes_primarias"] for x in par}
+        adicionais = {x for par in protocolo.get("comparacoes_adicionais", []) for x in par}
+        if not (protocolo_sim | adicionais) <= set(politicas):
+            erros.append("simulacao.politicas deve incluir todas as políticas das comparações "
+                         "primárias e adicionais.")
         if sim["tentativa_politica_C"] not in {"exames", "impressoes"}:
             erros.append("simulacao.tentativa_politica_C deve ser 'exames' ou 'impressoes'.")
         if not (0 <= sim["prob_atraso_avaliacao"] <= 1):

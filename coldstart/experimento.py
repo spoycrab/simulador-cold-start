@@ -1,4 +1,8 @@
-"""Execução das sementes: trajetórias de referência e experimento pareado A, B, C, D.
+"""Execução das sementes: trajetórias de referência e experimento pareado.
+
+As políticas do experimento principal vêm de `simulacao.politicas` (padrão A, B, B2,
+C, D). B2 é uma análise adicional pedida na revisão; o piloto e a sensibilidade
+continuam com as políticas do protocolo (A, B, C, D).
 
 A política de referência (`simulacao.politica_referencia`, padrão D) representa a
 prática atual da plataforma: um ranking por reputação com impulso a novos anúncios,
@@ -9,7 +13,7 @@ reputação pura.
 Desenho de cada semente:
   1. aquecimento de `aquecimento` rodadas sob a política de referência, a partir da
      amostra real;
-  2. o estado ao fim do aquecimento é copiado e cada política (A, B, C, D) roda
+  2. o estado ao fim do aquecimento é copiado e cada política roda
      as T rodadas seguintes com os mesmos fluxos exógenos;
   3. as métricas são coletadas apenas nas T rodadas da fase de avaliação.
 """
@@ -24,7 +28,7 @@ import numpy as np
 from . import metricas, motor
 from .fluxos import Fluxos
 from .parametros_sim import ParametrosSimulacao
-from .politicas import POLITICAS
+from .politicas import POLITICAS_PROTOCOLO
 
 
 def numero_de_processos(configurado: int | None) -> int:
@@ -66,7 +70,7 @@ def rodar_semente(args: tuple) -> list[dict]:
 
 
 def rodar_sementes(p: ParametrosSimulacao, sementes, processos: int,
-                   politicas=POLITICAS) -> list[dict]:
+                   politicas=POLITICAS_PROTOCOLO) -> list[dict]:
     resultados = mapear(rodar_semente, [(p, s, tuple(politicas)) for s in sementes], processos)
     return [linha for lote in resultados for linha in lote]
 
@@ -95,7 +99,8 @@ def executar_experimento(config: dict, pasta_resultados, n_sementes: int | None,
                                              ["sementes_recomendadas"]))
     sementes = [SEMENTE_EXPERIMENTO + i for i in range(n_sementes)]
     inicio = time.perf_counter()
-    linhas = rodar_sementes(p, sementes, processos)
+    politicas = tuple(config["simulacao"].get("politicas", POLITICAS_PROTOCOLO))
+    linhas = rodar_sementes(p, sementes, processos, politicas)
     saida = pasta / "experimento"
     saida.mkdir(parents=True, exist_ok=True)
     km = [{"semente": l["semente"], "politica": l["politica"], "t": t, "S": s}
@@ -104,7 +109,7 @@ def executar_experimento(config: dict, pasta_resultados, n_sementes: int | None,
     df = pd.DataFrame([{k: v for k, v in l.items() if not k.startswith("_")} for l in linhas])
     df.to_csv(saida / "metricas_por_semente.csv", index=False)
     registro = p.resumo()
-    registro.update({"sementes": sementes, "segundos": round(time.perf_counter() - inicio, 1),
+    registro.update({"politicas": list(politicas), "sementes": sementes, "segundos": round(time.perf_counter() - inicio, 1),
                      "processos": processos})
     (saida / "parametros.json").write_text(json.dumps(registro, indent=2, ensure_ascii=False,
                                                       default=float), encoding="utf-8")

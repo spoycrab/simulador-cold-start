@@ -1,0 +1,13 @@
+Parâmetro,Valor,Origem
+Anfitriões na coleta,15840.0,dados
+Anfitriões elegíveis (limite de anúncios),11459.0,dados
+Fornecedores (população com preço),11203.0,dados
+Fornecedores excluídos sem preço,256.0,dados
+Nota média global (m),4.868047592695074,dados
+Beta da qualidade: a,45.75011454112585,calibrado
+Beta da qualidade: b,1.227919470228132,calibrado
+"Taxa mensal de entrada (2025, %)",1.6900235056086166,calibrado
+Limite entre faixas 0 e 1 (preço),217.0,dados
+Limite entre faixas 1 e 2 (preço),286.0,dados
+Limite entre faixas 2 e 3 (preço),363.6780000000001,dados
+Limite entre faixas 3 e 4 (preço),501.1020000000001,dados

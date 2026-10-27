@@ -1,0 +1,38 @@
+\begin{table}[ht]
+\centering
+\caption{Diferenças pareadas em relação a B}
+\label{tab:comparacoes}
+\begin{tabular}{lrrrrrrrrrrrr}
+\hline
+\textbf{metrica} & \textbf{descricao} & \textbf{comparacao} & \textbf{n} & \textbf{diferenca\_media} & \textbf{ic95\_inf} & \textbf{ic95\_sup} & \textbf{ic90\_inf} & \textbf{ic90\_sup} & \textbf{d\_z} & \textbf{erro\_monte\_carlo} & \textbf{p\_wilcoxon\_bilateral} & \textbf{p\_holm\_bilateral} \\
+\hline
+rmst\_alta & RMST do TTFC, novatos de alta qualidade (rodadas) & C vs B & 30 & -1,0591 & -1,1193 & -0,9983 & -1,1104 & -1,0086 & -6,1452 & 0,0315 & 0,0000 & 0,0000 \\
+rmst\_alta & RMST do TTFC, novatos de alta qualidade (rodadas) & D vs B & 30 & -0,7627 & -0,8143 & -0,7126 & -0,8053 & -0,7207 & -5,2997 & 0,0263 & 0,0000 & 0,0000 \\
+rmst\_alta & RMST do TTFC, novatos de alta qualidade (rodadas) & A vs B & 30 & 2,2973 & 2,1790 & 2,4203 & 2,1950 & 2,3989 & 6,5650 & 0,0639 & 0,0000 & 0,0000 \\
+rmst\_todos & RMST do TTFC, todos os novatos (rodadas) & C vs B & 30 & -0,9430 & -1,0553 & -0,8326 & -1,0368 & -0,8505 & -3,0251 & 0,0569 & 0,0000 & 0,0000 \\
+rmst\_todos & RMST do TTFC, todos os novatos (rodadas) & D vs B & 30 & -1,9666 & -2,0563 & -1,8797 & -2,0416 & -1,8934 & -7,7345 & 0,0464 & 0,0000 & 0,0000 \\
+rmst\_todos & RMST do TTFC, todos os novatos (rodadas) & A vs B & 30 & 3,5429 & 3,4366 & 3,6519 & 3,4543 & 3,6338 & 11,4873 & 0,0563 & 0,0000 & 0,0000 \\
+p\_contratacao\_ate\_h\_alta & P(contratação até h), alta qualidade & C vs B & 30 & 0,0001 & -0,0006 & 0,0008 & -0,0005 & 0,0007 & 0,0264 & 0,0004 & 0,7532 & 0,7532 \\
+p\_contratacao\_ate\_h\_alta & P(contratação até h), alta qualidade & D vs B & 30 & 0,0002 & -0,0002 & 0,0008 & -0,0002 & 0,0007 & 0,1730 & 0,0003 & 0,2733 & 0,5466 \\
+p\_contratacao\_ate\_h\_alta & P(contratação até h), alta qualidade & A vs B & 30 & -0,0149 & -0,0190 & -0,0111 & -0,0183 & -0,0118 & -1,3479 & 0,0020 & 0,0000 & 0,0000 \\
+descoberta\_alta & Descoberta de novatos de alta qualidade & C vs B & 30 & 0,0210 & 0,0183 & 0,0238 & 0,0188 & 0,0233 & 2,7383 & 0,0014 & 0,0000 & 0,0000 \\
+descoberta\_alta & Descoberta de novatos de alta qualidade & D vs B & 30 & 0,0155 & 0,0133 & 0,0178 & 0,0137 & 0,0175 & 2,4083 & 0,0012 & 0,0000 & 0,0000 \\
+descoberta\_alta & Descoberta de novatos de alta qualidade & A vs B & 30 & -0,0566 & -0,0623 & -0,0511 & -0,0614 & -0,0519 & -3,5172 & 0,0029 & 0,0000 & 0,0000 \\
+ndcg10 & NDCG@10 & C vs B & 30 & 0,0110 & 0,0105 & 0,0114 & 0,0106 & 0,0114 & 8,3125 & 0,0002 & 0,0000 & 0,0000 \\
+ndcg10 & NDCG@10 & D vs B & 30 & 0,0003 & -0,0000 & 0,0007 & 0,0001 & 0,0006 & 0,3535 & 0,0002 & 0,0606 & 0,0606 \\
+ndcg10 & NDCG@10 & A vs B & 30 & -0,0058 & -0,0064 & -0,0051 & -0,0063 & -0,0052 & -3,2983 & 0,0003 & 0,0000 & 0,0000 \\
+precisao10 & Precision@10 & C vs B & 30 & 0,0179 & 0,0172 & 0,0186 & 0,0174 & 0,0185 & 9,1853 & 0,0004 & 0,0000 & 0,0000 \\
+precisao10 & Precision@10 & D vs B & 30 & 0,0120 & 0,0115 & 0,0125 & 0,0116 & 0,0125 & 8,4852 & 0,0003 & 0,0000 & 0,0000 \\
+precisao10 & Precision@10 & A vs B & 30 & -0,0137 & -0,0143 & -0,0131 & -0,0142 & -0,0132 & -8,3528 & 0,0003 & 0,0000 & 0,0000 \\
+gini\_exposicao & Gini da exposição normalizada & C vs B & 30 & -0,0438 & -0,0456 & -0,0421 & -0,0453 & -0,0424 & -8,8272 & 0,0009 & 0,0000 & 0,0000 \\
+gini\_exposicao & Gini da exposição normalizada & D vs B & 30 & -0,0523 & -0,0535 & -0,0511 & -0,0533 & -0,0513 & -15,4787 & 0,0006 & 0,0000 & 0,0000 \\
+gini\_exposicao & Gini da exposição normalizada & A vs B & 30 & 0,0227 & 0,0217 & 0,0236 & 0,0218 & 0,0235 & 7,9910 & 0,0005 & 0,0000 & 0,0000 \\
+arrependimento\_por\_contratacao & Arrependimento por contratação & C vs B & 30 & -0,0224 & -0,0227 & -0,0220 & -0,0226 & -0,0221 & -25,4955 & 0,0002 & 0,0000 & 0,0000 \\
+arrependimento\_por\_contratacao & Arrependimento por contratação & D vs B & 30 & -0,0037 & -0,0039 & -0,0036 & -0,0039 & -0,0036 & -7,8724 & 0,0001 & 0,0000 & 0,0000 \\
+arrependimento\_por\_contratacao & Arrependimento por contratação & A vs B & 30 & -0,0142 & -0,0145 & -0,0138 & -0,0144 & -0,0139 & -14,9666 & 0,0002 & 0,0000 & 0,0000 \\
+conversao & Conversão (contratações por consulta) & C vs B & 30 & -0,0021 & -0,0024 & -0,0018 & -0,0024 & -0,0018 & -2,2292 & 0,0002 & 0,0000 & 0,0000 \\
+conversao & Conversão (contratações por consulta) & D vs B & 30 & 0,0029 & 0,0026 & 0,0032 & 0,0026 & 0,0032 & 3,2800 & 0,0002 & 0,0000 & 0,0000 \\
+conversao & Conversão (contratações por consulta) & A vs B & 30 & -0,0134 & -0,0137 & -0,0130 & -0,0137 & -0,0131 & -13,8998 & 0,0002 & 0,0000 & 0,0000 \\
+\hline
+\end{tabular}
+\end{table}

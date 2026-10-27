@@ -1,0 +1,42 @@
+{
+  "sementes_piloto": 10,
+  "segundos_total": 34.4,
+  "segundos_por_semente_em_um_nucleo": 34.4,
+  "processos": 11,
+  "politica_referencia": "D",
+  "precisao": [
+    {
+      "metrica": "ndcg10",
+      "comparacao": "C vs B",
+      "meia_largura_ic95": 0.0006794805173719439,
+      "limite": 0.005,
+      "sementes_necessarias": 30
+    },
+    {
+      "metrica": "ndcg10",
+      "comparacao": "D vs B",
+      "meia_largura_ic95": 0.0005249799024723932,
+      "limite": 0.005,
+      "sementes_necessarias": 30
+    },
+    {
+      "metrica": "rmst_alta",
+      "comparacao": "C vs B",
+      "meia_largura_ic95": 0.1617415148088957,
+      "limite": 0.25,
+      "sementes_necessarias": 30
+    },
+    {
+      "metrica": "rmst_alta",
+      "comparacao": "D vs B",
+      "meia_largura_ic95": 0.14804791189534527,
+      "limite": 0.25,
+      "sementes_necessarias": 30
+    }
+  ],
+  "sementes_recomendadas": 30,
+  "estimativa_minutos_experimento": 1.7,
+  "observacao": "Estimativas de efeito omitidas para preservar o pré-registro.",
+  "n_coorte_alta_medio": 308.5,
+  "consultas_sem_oferta_medio": 0.0
+}

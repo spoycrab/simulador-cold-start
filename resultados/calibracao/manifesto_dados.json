@@ -1,0 +1,20 @@
+{
+  "gerado_em": "2026-10-19T20:43:35+00:00",
+  "arquivos": {
+    "listings": {
+      "nome": "listings.csv.gz",
+      "bytes": 24428483,
+      "sha256": "bcac253acef155de0fed15f4c565a294ff9558a040f8dedffc3467dc77de18fe"
+    },
+    "reviews": {
+      "nome": "reviews.csv.gz",
+      "bytes": 138698574,
+      "sha256": "548932537801bd68d0e5bc7d883631d12d379acab0ec33c2a7404c64abf981b7"
+    },
+    "calendar": {
+      "nome": "calendar.csv.gz",
+      "bytes": 36634577,
+      "sha256": "1e89e91a0a208c74208e404550a8f9a64b6cdae6a053d43e411157a69138b930"
+    }
+  }
+}

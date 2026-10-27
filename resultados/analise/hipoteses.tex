@@ -1,0 +1,19 @@
+\begin{table}[ht]
+\centering
+\caption{Decisão das hipóteses pré-registradas}
+\label{tab:hipoteses}
+\begin{tabular}{lrrrrrrrr}
+\hline
+\textbf{hipotese} & \textbf{comparacao} & \textbf{metrica} & \textbf{diferenca\_media} & \textbf{p\_unilateral} & \textbf{p\_holm} & \textbf{criterio} & \textbf{sustentada} & \textbf{ic90\_inf} \\
+\hline
+H1 & C vs B & rmst\_alta & -1,0591 & 0,0000 & 0,0000 & p de Holm < 0,05 na direção da hipótese & Sim & -- \\
+H1 & D vs B & rmst\_alta & -0,7627 & 0,0000 & 0,0000 & p de Holm < 0,05 na direção da hipótese & Sim & -- \\
+H2 & C vs B & ndcg10 & 0,0110 & -- & -- & limite inferior do IC 90\% > -0.02 & Sim & 0,0106 \\
+H2 & D vs B & ndcg10 & 0,0003 & -- & -- & limite inferior do IC 90\% > -0.02 & Sim & 0,0001 \\
+H3 & C vs B & descoberta\_alta & 0,0210 & 0,0000 & 0,0000 & p de Holm < 0,05 na direção da hipótese & Sim & -- \\
+H3 & D vs B & descoberta\_alta & 0,0155 & 0,0000 & 0,0000 & p de Holm < 0,05 na direção da hipótese & Sim & -- \\
+H4 & C vs B & gini\_exposicao & -0,0438 & 0,0000 & 0,0000 & p de Holm < 0,05 na direção da hipótese & Sim & -- \\
+H4 & D vs B & gini\_exposicao & -0,0523 & 0,0000 & 0,0000 & p de Holm < 0,05 na direção da hipótese & Sim & -- \\
+\hline
+\end{tabular}
+\end{table}

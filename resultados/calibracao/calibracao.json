@@ -1,0 +1,238 @@
+{
+  "versao_codigo": "0.1.0",
+  "data_coleta": "2026-06-14",
+  "arquivos": {
+    "listings": {
+      "nome": "listings.csv.gz",
+      "bytes": 24428483,
+      "sha256": "bcac253acef155de0fed15f4c565a294ff9558a040f8dedffc3467dc77de18fe"
+    },
+    "reviews": {
+      "nome": "reviews.csv.gz",
+      "bytes": 138698574,
+      "sha256": "548932537801bd68d0e5bc7d883631d12d379acab0ec33c2a7404c64abf981b7"
+    },
+    "calendar": {
+      "nome": "calendar.csv.gz",
+      "bytes": 36634577,
+      "sha256": "1e89e91a0a208c74208e404550a8f9a64b6cdae6a053d43e411157a69138b930"
+    }
+  },
+  "populacao": {
+    "fornecedores_total": 15840,
+    "max_anuncios_por_fornecedor": 1,
+    "fornecedores_elegiveis": 11459,
+    "excluidos_sem_preco": 256,
+    "fornecedores_com_preco": 11203,
+    "n_faixas_preco": 5,
+    "limites_faixas_preco": [
+      11.53,
+      217.0,
+      286.0,
+      363.6780000000001,
+      501.1020000000001,
+      57127.0
+    ],
+    "fornecedores_por_faixa": {
+      "0": 2291,
+      "1": 2212,
+      "2": 2219,
+      "3": 2240,
+      "4": 2241
+    }
+  },
+  "nota": {
+    "media_global": 4.868047592695074,
+    "quantis": [
+      0.0,
+      3.67,
+      4.0,
+      4.33,
+      4.5,
+      4.5,
+      4.58,
+      4.64,
+      4.67,
+      4.68,
+      4.7,
+      4.73,
+      4.75,
+      4.75,
+      4.77,
+      4.78,
+      4.79,
+      4.8,
+      4.8,
+      4.81,
+      4.82,
+      4.83,
+      4.83,
+      4.84,
+      4.85,
+      4.86,
+      4.86,
+      4.86,
+      4.87,
+      4.88,
+      4.88,
+      4.88,
+      4.89,
+      4.89,
+      4.9,
+      4.9,
+      4.9,
+      4.91,
+      4.91,
+      4.92,
+      4.92,
+      4.92,
+      4.93,
+      4.93,
+      4.93,
+      4.94,
+      4.94,
+      4.94,
+      4.94,
+      4.95,
+      4.95,
+      4.95,
+      4.95,
+      4.96,
+      4.96,
+      4.96,
+      4.97,
+      4.97,
+      4.97,
+      4.98,
+      4.98,
+      4.98,
+      4.99,
+      4.99,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0,
+      5.0
+    ]
+  },
+  "qualidade": {
+    "escala_configurada": "percentil",
+    "beta_escala_nota": {
+      "a": 45.75011454112585,
+      "b": 1.227919470228132,
+      "media": 0.9738618378552972,
+      "var_observada": 0.0008666124297020204,
+      "var_ruido_descontada": 0.0003360579968468498,
+      "var_qualidade": 0.0005305544328551706,
+      "n_fornecedores_usados": 6192,
+      "n_min_avaliacoes": 10
+    }
+  },
+  "entrada": {
+    "ano_referencia": 2025,
+    "entradas_no_ano": 2272,
+    "fornecedores_na_coleta": 11203,
+    "taxa_mensal": 0.016900235056086167,
+    "observacao": "Calculada apenas com fornecedores ativos na coleta (viés de sobrevivência)."
+  },
+  "alvos_calibracao": {
+    "prop_sem_avaliacao_janela": {
+      "valor": 0.4356543363382033,
+      "janela_meses": 24,
+      "n_coorte": 6434,
+      "comparavel": false,
+      "uso": "referência; não usado no ajuste",
+      "observacao": "inflada pela diferença entre idade da conta e idade do anúncio"
+    },
+    "avaliacoes_por_fornecedor_mes": {
+      "valor": 1.0901486250198695,
+      "mediana": 0.4166666666666667,
+      "n_fornecedores": 8388,
+      "uso": "ajuste da demanda (clientes por rodada)"
+    },
+    "contratacoes_por_fornecedor_mes": {
+      "valor": 1.5573551785998136,
+      "p_review_assumido": 0.7,
+      "uso": "derivado: avaliações por mês divididas por p_review (hipótese)"
+    }
+  },
+  "alvos_validacao": {
+    "prop_sem_avaliacao_coorte_12_23m": {
+      "valor": 0.1368801652892562,
+      "n": 1936,
+      "definicao": "coorte de 12 a 23 meses sem nenhuma avaliação"
+    },
+    "mediana_avaliacoes_coorte_12_23m": {
+      "valor": 18.0,
+      "n": 1936
+    },
+    "prop_1a_avaliacao_ate_3m_coorte_12_23m": {
+      "valor": 0.6967975206611571,
+      "n": 1936,
+      "definicao": "coorte de 12 a 23 meses com 1ª avaliação até 3 meses após o cadastro"
+    },
+    "mediana_meses_ate_1a_avaliacao_coorte_12_23m": {
+      "valor": 0.29568788501026694,
+      "n": 1671,
+      "definicao": "avaliados da coorte de 12 a 23 meses"
+    },
+    "mediana_meses_ate_1a_avaliacao": {
+      "valor": 1.51129363449692,
+      "n": 2710,
+      "definicao": "coorte com pelo menos 24 meses, avaliados na janela",
+      "comparavel": false,
+      "observacao": "inflada pela diferença entre idade da conta e idade do anúncio"
+    }
+  },
+  "amostra": {
+    "arquivo": "fornecedores_amostra.csv",
+    "n": 2000,
+    "semente": 20261019,
+    "por_faixa": {
+      "0": 409,
+      "1": 395,
+      "2": 396,
+      "3": 400,
+      "4": 400
+    }
+  },
+  "hipoteses_nao_identificadas": {
+    "gamma": 0.6,
+    "tau": 5.0,
+    "p_review": 0.7,
+    "sigma_ruido": 0.1,
+    "churn_mensal": 0.02
+  }
+}

@@ -4,6 +4,12 @@ Entradas (geradas por `python -m coldstart experimento`):
   resultados/experimento/metricas_por_semente.csv
   resultados/experimento/km_alta.csv
 Saídas em resultados/analise/: tabelas .csv e .tex e figuras .pdf.
+
+Análise adicional (revisão do orientador): com a política B2 no experimento, a
+diferença C - B é decomposta, semente a semente, em (C - B2) + (B2 - B), isto é,
+efeito da exploração mais efeito do sinal. As comparações adicionais são
+descritivas (IC por bootstrap pareado e Wilcoxon bilateral), sem decisão de
+hipótese; H1 a H4 continuam usando apenas C vs B e D vs B.
 """
 
 from __future__ import annotations
@@ -42,11 +48,22 @@ METRICAS = {
 }
 
 POLITICAS_ROTULO = {"A": "A: média simples", "B": "B: reputação bayesiana",
-                    "C": "C: Thompson Sampling", "D": "D: cota temporal"}
+                    "B2": "B2: média posterior Beta", "C": "C: Thompson Sampling",
+                    "D": "D: cota temporal"}
 # Paleta categórica de referência (ordem fixa) + estilos para impressão em preto e branco
-CORES = {"A": "#2a78d6", "B": "#eb6834", "C": "#1baf7a", "D": "#eda100"}
-ESTILOS = {"A": ":", "B": "--", "C": "-", "D": "-."}
-MARCADORES = {"A": "s", "B": "o", "C": "^", "D": "D"}
+CORES = {"A": "#2a78d6", "B": "#eb6834", "B2": "#7a5bd1", "C": "#1baf7a", "D": "#eda100"}
+ESTILOS = {"A": ":", "B": "--", "B2": (0, (5, 1, 1, 1)), "C": "-", "D": "-."}
+MARCADORES = {"A": "s", "B": "o", "B2": "v", "C": "^", "D": "D"}
+POLITICAS_FIGURA_KM = ("A", "B", "C", "D")   # a Figura 1 do artigo não inclui B2
+
+# Decomposição C - B = (C - B2) + (B2 - B)
+METRICAS_DECOMPOSICAO = {
+    "rmst_alta": "RMST, alta qualidade (meses)",
+    "rmst_todos": "RMST, todos os novatos (meses)",
+    "descoberta_alta": "Descoberta, alta qualidade",
+    "ndcg10": "NDCG@10",
+    "gini_exposicao": "Gini da exposição",
+}
 
 
 def diferencas_pareadas(df: pd.DataFrame, metrica: str, a: str, b: str) -> np.ndarray:
@@ -121,6 +138,33 @@ def nao_inferioridade_por_delta(df: pd.DataFrame, primarias, deltas) -> pd.DataF
     return pd.DataFrame(linhas)
 
 
+def tabela_decomposicao(df: pd.DataFrame) -> pd.DataFrame:
+    """C - B = (C - B2) + (B2 - B), por métrica, com IC 95% por bootstrap pareado.
+
+    A soma vale exatamente em cada semente; os intervalos são calculados para
+    cada parcela separadamente.
+    """
+    linhas = []
+    for i, (metrica, nome) in enumerate(METRICAS_DECOMPOSICAO.items()):
+        partes = {}
+        for rotulo, (a, b) in {"C - B (total)": ("C", "B"), "C - B2 (exploração)": ("C", "B2"),
+                               "B2 - B (sinal)": ("B2", "B")}.items():
+            r = resumo_diferenca(diferencas_pareadas(df, metrica, a, b), semente=i)
+            partes[rotulo] = r
+            linhas.append({"metrica": metrica, "descricao": nome, "parcela": rotulo,
+                           "diferenca_media": r["diferenca_media"], "ic95_inf": r["ic95_inf"],
+                           "ic95_sup": r["ic95_sup"]})
+        total = partes["C - B (total)"]["diferenca_media"]
+        soma = partes["C - B2 (exploração)"]["diferenca_media"] + partes["B2 - B (sinal)"]["diferenca_media"]
+        assert np.isclose(total, soma), (metrica, total, soma)
+    tabela = pd.DataFrame(linhas)
+    totais = tabela[tabela["parcela"] == "C - B (total)"].set_index("metrica")["diferenca_media"]
+    tabela["fracao_do_total"] = [
+        r["diferenca_media"] / totais[r["metrica"]] if totais[r["metrica"]] != 0 else np.nan
+        for _, r in tabela.iterrows()]
+    return tabela
+
+
 # ---------------------------------------------------------------------------
 # Figuras
 # ---------------------------------------------------------------------------
@@ -141,7 +185,7 @@ def figura_kaplan_meier(km: pd.DataFrame, destino: Path, horizonte: int) -> None
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
     fig, ax = plt.subplots(figsize=(6.0, 3.4))
-    for politica in sorted(km["politica"].unique()):
+    for politica in [p for p in POLITICAS_FIGURA_KM if p in set(km["politica"])]:
         curvas = km[km["politica"] == politica].pivot(index="semente", columns="t", values="S")
         media = curvas.mean().to_numpy()
         meia = 1.96 * curvas.std(ddof=1).to_numpy() / np.sqrt(len(curvas))
@@ -170,6 +214,8 @@ def figura_fronteira(comparacoes: pd.DataFrame, destino: Path, delta: float) -> 
     ndcg = comparacoes[comparacoes["metrica"] == "ndcg10"].set_index("comparacao")
     rmst = comparacoes[comparacoes["metrica"] == "rmst_alta"].set_index("comparacao")
     for comparacao in ndcg.index:
+        if not comparacao.endswith(" vs B"):
+            continue                     # a figura mostra só as comparações com B
         politica = comparacao.split()[0]
         x, y = ndcg.loc[comparacao], rmst.loc[comparacao]
         ax.errorbar(x["diferenca_media"], y["diferenca_media"],
@@ -211,7 +257,10 @@ def executar_analise(config: dict, pasta_resultados: str | Path) -> dict:
 
     protocolo = config["protocolo"]
     primarias = [tuple(c) for c in protocolo["comparacoes_primarias"]]
-    todas = primarias + [("A", "B")]
+    presentes = set(df["politica"])
+    todas = primarias + ([("A", "B")] if "A" in presentes else [])
+    adicionais = [tuple(c) for c in protocolo.get("comparacoes_adicionais", [])
+                  if set(c) <= presentes]
     delta = float(protocolo["delta_nao_inferioridade"])
 
     por_politica = tabela_por_politica(df)
@@ -226,9 +275,20 @@ def executar_analise(config: dict, pasta_resultados: str | Path) -> dict:
                   "Diferenças pareadas em relação a B", "tab:comparacoes", casas=4)
     salvar_tabela(hipoteses, saida, "hipoteses",
                   "Decisão das hipóteses pré-registradas", "tab:hipoteses", casas=4)
+    decomposicao = pd.DataFrame()
+    if adicionais:
+        salvar_tabela(tabela_comparacoes(df, adicionais), saida, "comparacoes_adicionais",
+                      "Análises adicionais: C vs B2 (exploração) e B2 vs B (sinal)",
+                      "tab:comparacoes_adicionais", casas=4)
+    if {"B", "B2", "C"} <= presentes:
+        decomposicao = tabela_decomposicao(df)
+        salvar_tabela(decomposicao, saida, "decomposicao_b2",
+                      "Decomposição C - B = (C - B2) + (B2 - B): exploração e sinal",
+                      "tab:decomposicao", casas=4)
     salvar_tabela(deltas, saida, "nao_inferioridade_por_delta",
                   "Não inferioridade do NDCG@10 para diferentes margens", "tab:delta", casas=4)
 
     figura_kaplan_meier(km, saida / "fig_kaplan_meier_alta.pdf", int(parametros["horizonte_h"]))
     figura_fronteira(comparacoes, saida / "fig_fronteira.pdf", delta)
-    return {"hipoteses": hipoteses, "comparacoes": comparacoes, "por_politica": por_politica}
+    return {"hipoteses": hipoteses, "comparacoes": comparacoes, "por_politica": por_politica,
+            "decomposicao": decomposicao}

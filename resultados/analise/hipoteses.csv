@@ -1,0 +1,9 @@
+hipotese,comparacao,metrica,diferenca_media,p_unilateral,p_holm,criterio,sustentada,ic90_inf
+H1,C vs B,rmst_alta,-1.059146391927235,9.313225746154785e-10,1.862645149230957e-09,"p de Holm < 0,05 na direção da hipótese",True,
+H1,D vs B,rmst_alta,-0.7627263548560942,9.313225746154785e-10,1.862645149230957e-09,"p de Holm < 0,05 na direção da hipótese",True,
+H2,C vs B,ndcg10,0.010988858455295566,,,limite inferior do IC 90% > -0.02,True,0.010598288772720604
+H2,D vs B,ndcg10,0.0003396754427934264,,,limite inferior do IC 90% > -0.02,True,5.198817849894603e-05
+H3,C vs B,descoberta_alta,0.021008673949266886,8.661081165720569e-07,8.661081165720569e-07,"p de Holm < 0,05 na direção da hipótese",True,
+H3,D vs B,descoberta_alta,0.015540481028377691,9.313225746154785e-10,1.862645149230957e-09,"p de Holm < 0,05 na direção da hipótese",True,
+H4,C vs B,gini_exposicao,-0.04382711016838471,9.313225746154785e-10,1.862645149230957e-09,"p de Holm < 0,05 na direção da hipótese",True,
+H4,D vs B,gini_exposicao,-0.0522618804308071,9.313225746154785e-10,1.862645149230957e-09,"p de Holm < 0,05 na direção da hipótese",True,

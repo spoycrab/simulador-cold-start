@@ -1,0 +1,9 @@
+Alvo,Valor,Papel
+prop_sem_avaliacao_janela,0.4356543363382033,calibração
+avaliacoes_por_fornecedor_mes,1.0901486250198695,calibração
+contratacoes_por_fornecedor_mes,1.5573551785998136,calibração
+prop_sem_avaliacao_coorte_12_23m,0.1368801652892562,validação
+mediana_avaliacoes_coorte_12_23m,18.0,validação
+prop_1a_avaliacao_ate_3m_coorte_12_23m,0.6967975206611571,validação
+mediana_meses_ate_1a_avaliacao_coorte_12_23m,0.29568788501026694,validação
+mediana_meses_ate_1a_avaliacao,1.51129363449692,validação

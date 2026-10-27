@@ -7,7 +7,7 @@ Uso (na raiz do projeto, com o ambiente virtual ativo):
     python -m coldstart calibrar-simulador    ajusta demanda e compatibilidade  (etapa 2)
     python -m coldstart validar               compara simulado e observado      (etapa 2)
     python -m coldstart piloto                precisão Monte Carlo e tempo      (etapa 2)
-    python -m coldstart experimento           experimento principal A, B, C, D  (etapa 3)
+    python -m coldstart experimento           experimento principal A, B, B2, C, D (etapa 3)
     python -m coldstart analisar              testes, tabelas e figuras         (etapa 3)
     python -m coldstart sensibilidade         um parâmetro por vez              (etapa 3)
 
@@ -97,6 +97,11 @@ def main(argv=None) -> int:
                 res = executar_analise(config, pasta_saida)
                 colunas = ["hipotese", "comparacao", "metrica", "diferenca_media", "sustentada"]
                 print(res["hipoteses"][colunas].round(4).to_string(index=False))
+                decomposicao = res.get("decomposicao")
+                if decomposicao is not None and not decomposicao.empty:
+                    print("\nDecomposição C - B = (C - B2) + (B2 - B) (análise adicional):")
+                    print(decomposicao[["metrica", "parcela", "diferenca_media", "ic95_inf",
+                                        "ic95_sup", "fracao_do_total"]].round(4).to_string(index=False))
                 print(f"\nResultados em {pasta_saida / 'analise'}")
                 print(f"Concluído em {time.perf_counter() - inicio:.1f} s.")
                 return 0
