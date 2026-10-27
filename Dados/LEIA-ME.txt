@@ -1,0 +1,13 @@
+Dados do Inside Airbnb (não versionados neste repositório)
+
+Coloque nesta pasta os arquivos de São Paulo da coleta de 14/06/2026:
+  listings.csv.gz   (obrigatório)
+  reviews.csv.gz    (opcional: conferência)
+  calendar.csv.gz   (opcional: conferência)
+
+Fonte: https://insideairbnb.com/get-the-data (licença CC BY 4.0).
+A página mostra só as coletas mais recentes; coletas anteriores podem ser
+pedidas ao Inside Airbnb. Para confirmar que os arquivos são os mesmos usados
+no artigo, compare os códigos SHA-256 com os de
+resultados/auditoria/manifesto_dados.json (o comando "auditar" calcula e
+grava esses códigos).

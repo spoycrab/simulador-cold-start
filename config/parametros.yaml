@@ -1,0 +1,101 @@
+# =============================================================================
+# Parâmetros do estudo "Cold start de prestadores em marketplaces de serviços"
+#
+# Os parâmetros estão separados em grupos, conforme o parecer do orientador:
+#   - dados:         localização e identificação da coleta.
+#   - calibracao:    escolhas usadas pela etapa de calibração.
+#   - projeto:       escolhas do autor (não estimadas a partir dos dados).
+#   - protocolo:     decisões pré-registradas, que não devem mudar após a execução.
+#   - sensibilidade: grades varridas na análise de sensibilidade.
+#
+# Valores estimados a partir dos dados NÃO ficam aqui: são gravados pela
+# calibração em resultados/calibracao/calibracao.json.
+# =============================================================================
+
+dados:
+  pasta: Dados             # pasta com listings, reviews e calendar
+  data_coleta: null        # null = extraída do scrape_id do arquivo listings
+
+calibracao:
+  ano_referencia_entrada: 2025   # ano usado para a taxa recente de entrada
+  max_anuncios_por_fornecedor: 1 # população: anfitriões com no máximo N anúncios (null = todos)
+  n_faixas_preco: 5              # categorias G = quintis do preço mediano do fornecedor
+  n_min_avaliacoes_beta: 10      # mínimo de avaliações para ajustar a distribuição Beta
+  janela_sem_avaliacao_meses: 24 # referência (não comparável): sem avaliação nos 1ºs 24 meses
+  excluir_teto_15_anos: true     # exclui fornecedores com tempo de cadastro no teto do campo
+
+projeto:
+  unidade: fornecedor            # unidade ranqueada: fornecedor (anfitrião)
+  n_fornecedores_amostra: 2000   # tamanho da amostra estratificada por faixa de preço
+  semente_amostra: 20261019
+  escala_qualidade: percentil    # percentil | nota  (ver README, seção "Qualidade latente")
+  T: 60                          # rodadas (meses)
+  K: 10                          # tamanho da lista exibida
+  sigma_ruido: 0.10              # desvio do ruído de cada avaliação, na escala [0, 1]
+  p_review: 0.70                 # probabilidade de uma contratação gerar avaliação (hipótese)
+  churn_mensal: 0.02             # taxa mensal de saída de fornecedores (hipótese)
+  janela_novidade_w: 12          # política D: idade máxima (rodadas) para ser novato
+  horizonte_h: 24                # horizonte do TTFC (rodadas)
+  politica_D:
+    rho: 0.2                     # fração da lista reservada: ceil(0,2 x 10) = 2 posições
+    posicoes_reservadas: [3, 8]  # posições fixas (1 = topo)
+  C_bayes: 5                     # força da priori da média bayesiana (política B)
+  kappa_priori: 2                # força da priori empírica do Thompson Sampling (política C)
+  percentil_alta_qualidade: 0.75 # define "alta qualidade" (q acima do percentil 75)
+  janela_descoberta: 20          # rodadas para a taxa de descoberta
+  escolha:
+    gamma: 0.6                   # viés de posição: p_k = min(1, gamma / log2(1 + k))
+    tau: 5.0                     # sensibilidade da escolha logit à utilidade
+    u0: 2.5                      # utilidade de não contratar (hipótese): igual à de um
+                                 # fornecedor mediano (tau x 0,5)
+  clientes_por_rodada: null      # demanda: calibrada na etapa 2 (null = usar a calibração)
+
+simulacao:
+  politica_referencia: D         # prática atual (calibração, validação e aquecimento): D = reputação
+                                 # com impulso a novatos (Haldar et al., 2020); B = reputação pura
+  aquecimento: 24                # rodadas sob a política de referência antes da ramificação
+  percentil_capacidade: 0.95     # capacidade mensal = percentil das contratações mensais nos dados
+  prob_atraso_avaliacao: 0.5     # probabilidade de a avaliação aparecer só na rodada seguinte
+  tentativa_politica_C: exames   # exames | impressoes
+  escore_A_sem_avaliacao: 1.0    # política A: escore de quem não tem avaliação (nota mínima)
+  consultas_por_lote: 250        # consultas processadas entre atualizações de capacidade
+  compatibilidade: null          # f: calibrada na etapa 2 (null = usar a calibração)
+  processos: 0                   # núcleos usados; 0 = automático (total - 1)
+  calibracao:
+    alvo_compatibilidade: prop_sem_avaliacao_coorte_12_23m
+    grade_compatibilidade: [0.02, 0.05, 0.1, 0.2, 0.4, 1.0]
+    sementes: 2
+    tolerancia_relativa: 0.02      # volume de avaliações: erro relativo aceito
+    tolerancia_sem_avaliacao: 0.01 # fração sem avaliação: erro absoluto aceito
+    max_iteracoes: 12
+    max_refinamentos: 4
+  validacao:
+    sementes: 10
+  sensibilidade:
+    sementes: 10                 # por cenário (um parâmetro por vez)
+  piloto:
+    sementes: 10
+    meia_largura_max_ndcg: 0.005  # rodadas extras se a meia largura do IC95 exceder estes valores
+    meia_largura_max_rmst: 0.25
+
+protocolo:
+  delta_nao_inferioridade: 0.02  # margem para NDCG@10 (pré-registrada)
+  comparacoes_primarias:
+    - [C, B]
+    - [D, B]
+  repeticoes_minimas: 30
+  alfa: 0.05
+  correcao_multiplicidade: holm
+
+sensibilidade:
+  taxa_entrada_mensal: [0.005, 0.010, 0.015, 0.020]
+  churn_mensal: [0.00, 0.01, 0.02, 0.03, 0.04]
+  delta_nao_inferioridade: [0.01, 0.02, 0.05]
+  gamma: [0.4, 0.6, 0.8]
+  tau: [2.0, 5.0, 10.0]
+  u0: [1.5, 2.5, 3.5]
+  p_review: [0.5, 0.7, 0.9]
+  sigma_ruido: [0.05, 0.10, 0.20]
+  kappa_priori: [1, 2, 5]
+  rho: [0.1, 0.2, 0.3]
+  janela_novidade_w: [6, 12, 18]

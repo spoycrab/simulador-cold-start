@@ -1,0 +1,14 @@
+# Ambiente e cache do Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Dados do Inside Airbnb (baixe do site; ver Dados/LEIA-ME.txt)
+Dados/*.csv
+Dados/*.csv.gz
+
+# Sistema
+.DS_Store
+Thumbs.db
