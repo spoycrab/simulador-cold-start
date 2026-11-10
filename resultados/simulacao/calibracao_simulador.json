@@ -1,10 +1,12 @@
 {
   "escolhido": {
-    "compatibilidade": 0.04500703756823119,
-    "clientes_por_rodada": 3325.0,
-    "avaliacoes_por_fornecedor_mes": 1.091507460111644,
-    "prop_sem_avaliacao_coorte_12_23m": 0.12907657657657656
+    "compatibilidade": 0.04826196046635042,
+    "clientes_por_rodada": 3374.0,
+    "avaliacoes_por_fornecedor_mes": 1.0908575784466295,
+    "prop_sem_avaliacao_coorte_12_23m": 0.1375225225225225
   },
+  "elegiveis_por_consulta_aprox": 19.304784186540168,
+  "avisos": [],
   "alvos": {
     "avaliacoes_por_fornecedor_mes": 1.0901486250198695,
     "prop_sem_avaliacao_coorte_12_23m": 0.1368801652892562
@@ -13,299 +15,275 @@
   "curva_identificacao": [
     {
       "compatibilidade": 0.02,
-      "clientes_por_rodada": 3699.0,
-      "avaliacoes_por_fornecedor_mes": 1.0684970616722747,
-      "prop_sem_avaliacao_coorte_12_23m": 0.03355855855855856
+      "clientes_por_rodada": 3746.0,
+      "avaliacoes_por_fornecedor_mes": 1.0699089545961655,
+      "prop_sem_avaliacao_coorte_12_23m": 0.04689189189189189
     },
     {
       "compatibilidade": 0.05,
-      "clientes_por_rodada": 3309.0,
-      "avaliacoes_por_fornecedor_mes": 1.0887145140612842,
-      "prop_sem_avaliacao_coorte_12_23m": 0.170990990990991
+      "clientes_por_rodada": 3376.0,
+      "avaliacoes_por_fornecedor_mes": 1.0895436117574366,
+      "prop_sem_avaliacao_coorte_12_23m": 0.14921171171171171
     },
     {
       "compatibilidade": 0.1,
-      "clientes_por_rodada": 3519.0,
-      "avaliacoes_por_fornecedor_mes": 1.078251962018346,
-      "prop_sem_avaliacao_coorte_12_23m": 0.40101351351351355
+      "clientes_por_rodada": 3566.0,
+      "avaliacoes_por_fornecedor_mes": 1.0743761709972979,
+      "prop_sem_avaliacao_coorte_12_23m": 0.37934684684684683
     },
     {
       "compatibilidade": 0.2,
-      "clientes_por_rodada": 4511.0,
-      "avaliacoes_por_fornecedor_mes": 1.0896935060661446,
-      "prop_sem_avaliacao_coorte_12_23m": 0.5386486486486486
+      "clientes_por_rodada": 4608.0,
+      "avaliacoes_por_fornecedor_mes": 1.1082138545928713,
+      "prop_sem_avaliacao_coorte_12_23m": 0.5402252252252252
     },
     {
       "compatibilidade": 0.4,
-      "clientes_por_rodada": 6266.0,
-      "avaliacoes_por_fornecedor_mes": 1.091121619517337,
-      "prop_sem_avaliacao_coorte_12_23m": 0.6125
+      "clientes_por_rodada": 6292.0,
+      "avaliacoes_por_fornecedor_mes": 1.095684952940507,
+      "prop_sem_avaliacao_coorte_12_23m": 0.6024549549549549
     },
     {
       "compatibilidade": 1.0,
-      "clientes_por_rodada": 11301.0,
-      "avaliacoes_por_fornecedor_mes": 1.0813496668220508,
-      "prop_sem_avaliacao_coorte_12_23m": 0.6460810810810811
+      "clientes_por_rodada": 12139.0,
+      "avaliacoes_por_fornecedor_mes": 1.097104789763666,
+      "prop_sem_avaliacao_coorte_12_23m": 0.649391891891892
     }
   ],
   "avaliacoes": [
     {
       "compatibilidade": 0.02,
       "clientes_por_rodada": 3461.0,
-      "avaliacoes_por_fornecedor_mes": 1.004936467937757,
-      "prop_sem_avaliacao_coorte_12_23m": 0.048581081081081084
+      "avaliacoes_por_fornecedor_mes": 0.9892599729624605,
+      "prop_sem_avaliacao_coorte_12_23m": 0.05027027027027027
     },
     {
       "compatibilidade": 0.02,
       "clientes_por_rodada": 31147.0,
-      "avaliacoes_por_fornecedor_mes": 3.8141810912904583,
+      "avaliacoes_por_fornecedor_mes": 3.7908187697952824,
       "prop_sem_avaliacao_coorte_12_23m": 0.0
     },
     {
       "compatibilidade": 0.02,
-      "clientes_por_rodada": 3699.0,
-      "avaliacoes_por_fornecedor_mes": 1.0684970616722747,
-      "prop_sem_avaliacao_coorte_12_23m": 0.03355855855855856
+      "clientes_por_rodada": 3746.0,
+      "avaliacoes_por_fornecedor_mes": 1.0699089545961655,
+      "prop_sem_avaliacao_coorte_12_23m": 0.04689189189189189
     },
     {
       "compatibilidade": 0.05,
       "clientes_por_rodada": 3461.0,
-      "avaliacoes_por_fornecedor_mes": 1.1308934790485687,
-      "prop_sem_avaliacao_coorte_12_23m": 0.16592342342342342
+      "avaliacoes_por_fornecedor_mes": 1.1158240685008673,
+      "prop_sem_avaliacao_coorte_12_23m": 0.14085585585585586
     },
     {
       "compatibilidade": 0.05,
       "clientes_por_rodada": 31147.0,
-      "avaliacoes_por_fornecedor_mes": 4.038080536831244,
+      "avaliacoes_por_fornecedor_mes": 4.002038691530822,
       "prop_sem_avaliacao_coorte_12_23m": 0.0
     },
     {
       "compatibilidade": 0.05,
       "clientes_por_rodada": 1154.0,
-      "avaliacoes_por_fornecedor_mes": 0.4068728162595231,
-      "prop_sem_avaliacao_coorte_12_23m": 0.33560810810810815
+      "avaliacoes_por_fornecedor_mes": 0.40701474587341463,
+      "prop_sem_avaliacao_coorte_12_23m": 0.325518018018018
     },
     {
       "compatibilidade": 0.05,
-      "clientes_por_rodada": 2145.0,
-      "avaliacoes_por_fornecedor_mes": 0.733349670315703,
-      "prop_sem_avaliacao_coorte_12_23m": 0.256509009009009
+      "clientes_por_rodada": 2158.0,
+      "avaliacoes_por_fornecedor_mes": 0.7288261811621617,
+      "prop_sem_avaliacao_coorte_12_23m": 0.24655405405405406
     },
     {
       "compatibilidade": 0.05,
-      "clientes_por_rodada": 2863.0,
-      "avaliacoes_por_fornecedor_mes": 0.9518030114282349,
-      "prop_sem_avaliacao_coorte_12_23m": 0.1878153153153153
+      "clientes_por_rodada": 2898.0,
+      "avaliacoes_por_fornecedor_mes": 0.9446141569102273,
+      "prop_sem_avaliacao_coorte_12_23m": 0.17274774774774776
     },
     {
       "compatibilidade": 0.05,
-      "clientes_por_rodada": 3514.0,
-      "avaliacoes_por_fornecedor_mes": 1.1476996713637986,
-      "prop_sem_avaliacao_coorte_12_23m": 0.14916666666666667
+      "clientes_por_rodada": 3595.0,
+      "avaliacoes_por_fornecedor_mes": 1.1500595501307458,
+      "prop_sem_avaliacao_coorte_12_23m": 0.15594594594594596
     },
     {
       "compatibilidade": 0.05,
-      "clientes_por_rodada": 3309.0,
-      "avaliacoes_por_fornecedor_mes": 1.0887145140612842,
-      "prop_sem_avaliacao_coorte_12_23m": 0.170990990990991
+      "clientes_por_rodada": 3376.0,
+      "avaliacoes_por_fornecedor_mes": 1.0895436117574366,
+      "prop_sem_avaliacao_coorte_12_23m": 0.14921171171171171
     },
     {
       "compatibilidade": 0.1,
       "clientes_por_rodada": 3461.0,
-      "avaliacoes_por_fornecedor_mes": 1.067076018707342,
-      "prop_sem_avaliacao_coorte_12_23m": 0.3993243243243243
+      "avaliacoes_por_fornecedor_mes": 1.0488282374259303,
+      "prop_sem_avaliacao_coorte_12_23m": 0.37592342342342344
     },
     {
       "compatibilidade": 0.1,
       "clientes_por_rodada": 31147.0,
-      "avaliacoes_por_fornecedor_mes": 4.087436398896538,
+      "avaliacoes_por_fornecedor_mes": 4.069970343053339,
       "prop_sem_avaliacao_coorte_12_23m": 0.0
     },
     {
       "compatibilidade": 0.1,
-      "clientes_por_rodada": 3519.0,
-      "avaliacoes_por_fornecedor_mes": 1.078251962018346,
-      "prop_sem_avaliacao_coorte_12_23m": 0.40101351351351355
+      "clientes_por_rodada": 3566.0,
+      "avaliacoes_por_fornecedor_mes": 1.0743761709972979,
+      "prop_sem_avaliacao_coorte_12_23m": 0.37934684684684683
     },
     {
       "compatibilidade": 0.2,
       "clientes_por_rodada": 3461.0,
-      "avaliacoes_por_fornecedor_mes": 0.8753320425120887,
-      "prop_sem_avaliacao_coorte_12_23m": 0.6109459459459459
+      "avaliacoes_por_fornecedor_mes": 0.8655702796352361,
+      "prop_sem_avaliacao_coorte_12_23m": 0.6076576576576577
     },
     {
       "compatibilidade": 0.2,
       "clientes_por_rodada": 31147.0,
-      "avaliacoes_por_fornecedor_mes": 4.046273088464925,
+      "avaliacoes_por_fornecedor_mes": 4.042938231233848,
       "prop_sem_avaliacao_coorte_12_23m": 0.0
     },
     {
       "compatibilidade": 0.2,
-      "clientes_por_rodada": 4016.0,
-      "avaliacoes_por_fornecedor_mes": 0.980305638820929,
-      "prop_sem_avaliacao_coorte_12_23m": 0.5571621621621622
+      "clientes_por_rodada": 4042.0,
+      "avaliacoes_por_fornecedor_mes": 0.9841404418172182,
+      "prop_sem_avaliacao_coorte_12_23m": 0.5723198198198198
     },
     {
       "compatibilidade": 0.2,
-      "clientes_por_rodada": 4322.0,
-      "avaliacoes_por_fornecedor_mes": 1.057452296676938,
-      "prop_sem_avaliacao_coorte_12_23m": 0.5302477477477477
+      "clientes_por_rodada": 4339.0,
+      "avaliacoes_por_fornecedor_mes": 1.0435968886200442,
+      "prop_sem_avaliacao_coorte_12_23m": 0.5638288288288289
     },
     {
       "compatibilidade": 0.2,
-      "clientes_por_rodada": 4511.0,
-      "avaliacoes_por_fornecedor_mes": 1.0896935060661446,
-      "prop_sem_avaliacao_coorte_12_23m": 0.5386486486486486
+      "clientes_por_rodada": 4608.0,
+      "avaliacoes_por_fornecedor_mes": 1.1082138545928713,
+      "prop_sem_avaliacao_coorte_12_23m": 0.5402252252252252
     },
     {
       "compatibilidade": 0.4,
       "clientes_por_rodada": 3461.0,
-      "avaliacoes_por_fornecedor_mes": 0.6454556653893211,
-      "prop_sem_avaliacao_coorte_12_23m": 0.7333108108108108
+      "avaliacoes_por_fornecedor_mes": 0.6467436792348303,
+      "prop_sem_avaliacao_coorte_12_23m": 0.7248648648648648
     },
     {
       "compatibilidade": 0.4,
       "clientes_por_rodada": 31147.0,
-      "avaliacoes_por_fornecedor_mes": 3.8516975696825533,
+      "avaliacoes_por_fornecedor_mes": 3.8452784207761166,
       "prop_sem_avaliacao_coorte_12_23m": 0.0
     },
     {
       "compatibilidade": 0.4,
-      "clientes_por_rodada": 4694.0,
-      "avaliacoes_por_fornecedor_mes": 0.8508330363729104,
-      "prop_sem_avaliacao_coorte_12_23m": 0.6879954954954954
+      "clientes_por_rodada": 4693.0,
+      "avaliacoes_por_fornecedor_mes": 0.8453875142199956,
+      "prop_sem_avaliacao_coorte_12_23m": 0.6629054054054054
     },
     {
       "compatibilidade": 0.4,
-      "clientes_por_rodada": 5458.0,
-      "avaliacoes_por_fornecedor_mes": 0.9712744235390962,
-      "prop_sem_avaliacao_coorte_12_23m": 0.6392567567567567
+      "clientes_por_rodada": 5477.0,
+      "avaliacoes_por_fornecedor_mes": 0.9706579811149807,
+      "prop_sem_avaliacao_coorte_12_23m": 0.6393018018018017
     },
     {
       "compatibilidade": 0.4,
-      "clientes_por_rodada": 6266.0,
-      "avaliacoes_por_fornecedor_mes": 1.091121619517337,
-      "prop_sem_avaliacao_coorte_12_23m": 0.6125
+      "clientes_por_rodada": 6292.0,
+      "avaliacoes_por_fornecedor_mes": 1.095684952940507,
+      "prop_sem_avaliacao_coorte_12_23m": 0.6024549549549549
     },
     {
       "compatibilidade": 1.0,
       "clientes_por_rodada": 3461.0,
-      "avaliacoes_por_fornecedor_mes": 0.35920844325859913,
-      "prop_sem_avaliacao_coorte_12_23m": 0.8960135135135134
+      "avaliacoes_por_fornecedor_mes": 0.3438136239785643,
+      "prop_sem_avaliacao_coorte_12_23m": 0.8943468468468468
     },
     {
       "compatibilidade": 1.0,
       "clientes_por_rodada": 31147.0,
-      "avaliacoes_por_fornecedor_mes": 2.859579560605047,
-      "prop_sem_avaliacao_coorte_12_23m": 0.09382882882882883
+      "avaliacoes_por_fornecedor_mes": 2.7110318052099336,
+      "prop_sem_avaliacao_coorte_12_23m": 0.12074324324324325
     },
     {
       "compatibilidade": 1.0,
-      "clientes_por_rodada": 6579.0,
-      "avaliacoes_por_fornecedor_mes": 0.6471292078959198,
-      "prop_sem_avaliacao_coorte_12_23m": 0.7902927927927927
+      "clientes_por_rodada": 6919.0,
+      "avaliacoes_por_fornecedor_mes": 0.635006630452468,
+      "prop_sem_avaliacao_coorte_12_23m": 0.7853153153153153
     },
     {
       "compatibilidade": 1.0,
-      "clientes_por_rodada": 8982.0,
-      "avaliacoes_por_fornecedor_mes": 0.8562168789309823,
-      "prop_sem_avaliacao_coorte_12_23m": 0.7215315315315316
+      "clientes_por_rodada": 9622.0,
+      "avaliacoes_por_fornecedor_mes": 0.8903415826776081,
+      "prop_sem_avaliacao_coorte_12_23m": 0.7081756756756756
     },
     {
       "compatibilidade": 1.0,
-      "clientes_por_rodada": 11649.0,
-      "avaliacoes_por_fornecedor_mes": 1.121027447294932,
-      "prop_sem_avaliacao_coorte_12_23m": 0.635945945945946
+      "clientes_por_rodada": 12139.0,
+      "avaliacoes_por_fornecedor_mes": 1.097104789763666,
+      "prop_sem_avaliacao_coorte_12_23m": 0.649391891891892
     },
     {
-      "compatibilidade": 1.0,
-      "clientes_por_rodada": 11301.0,
-      "avaliacoes_por_fornecedor_mes": 1.0813496668220508,
-      "prop_sem_avaliacao_coorte_12_23m": 0.6460810810810811
-    },
-    {
-      "compatibilidade": 0.03982914799435172,
+      "compatibilidade": 0.04477240496637024,
       "clientes_por_rodada": 3461.0,
-      "avaliacoes_por_fornecedor_mes": 1.1214510941951807,
-      "prop_sem_avaliacao_coorte_12_23m": 0.08547297297297297
+      "avaliacoes_por_fornecedor_mes": 1.1074986957032404,
+      "prop_sem_avaliacao_coorte_12_23m": 0.11072072072072073
     },
     {
-      "compatibilidade": 0.03982914799435172,
+      "compatibilidade": 0.04477240496637024,
       "clientes_por_rodada": 31147.0,
-      "avaliacoes_por_fornecedor_mes": 4.003912037660903,
+      "avaliacoes_por_fornecedor_mes": 3.9828187391842356,
       "prop_sem_avaliacao_coorte_12_23m": 0.0
     },
     {
-      "compatibilidade": 0.03982914799435172,
+      "compatibilidade": 0.04477240496637024,
       "clientes_por_rodada": 1154.0,
-      "avaliacoes_por_fornecedor_mes": 0.3947707848173203,
-      "prop_sem_avaliacao_coorte_12_23m": 0.2785810810810811
+      "avaliacoes_por_fornecedor_mes": 0.4016883198228819,
+      "prop_sem_avaliacao_coorte_12_23m": 0.2785135135135135
     },
     {
-      "compatibilidade": 0.03982914799435172,
-      "clientes_por_rodada": 2177.0,
-      "avaliacoes_por_fornecedor_mes": 0.7347308274199114,
-      "prop_sem_avaliacao_coorte_12_23m": 0.17105855855855856
+      "compatibilidade": 0.04477240496637024,
+      "clientes_por_rodada": 2174.0,
+      "avaliacoes_por_fornecedor_mes": 0.7321785690400542,
+      "prop_sem_avaliacao_coorte_12_23m": 0.1861936936936937
     },
     {
-      "compatibilidade": 0.03982914799435172,
-      "clientes_por_rodada": 2907.0,
-      "avaliacoes_por_fornecedor_mes": 0.9557747531069379,
-      "prop_sem_avaliacao_coorte_12_23m": 0.11905405405405406
-    },
-    {
-      "compatibilidade": 0.03982914799435172,
-      "clientes_por_rodada": 3552.0,
-      "avaliacoes_por_fornecedor_mes": 1.1454957592055235,
-      "prop_sem_avaliacao_coorte_12_23m": 0.0972972972972973
-    },
-    {
-      "compatibilidade": 0.03982914799435172,
-      "clientes_por_rodada": 3350.0,
-      "avaliacoes_por_fornecedor_mes": 1.0897355754593903,
-      "prop_sem_avaliacao_coorte_12_23m": 0.09725225225225226
-    },
-    {
-      "compatibilidade": 0.04500703756823119,
+      "compatibilidade": 0.04826196046635042,
       "clientes_por_rodada": 3461.0,
-      "avaliacoes_por_fornecedor_mes": 1.1285925764552474,
-      "prop_sem_avaliacao_coorte_12_23m": 0.12907657657657656
+      "avaliacoes_por_fornecedor_mes": 1.1141232214399768,
+      "prop_sem_avaliacao_coorte_12_23m": 0.13245495495495496
     },
     {
-      "compatibilidade": 0.04500703756823119,
+      "compatibilidade": 0.04826196046635042,
       "clientes_por_rodada": 31147.0,
-      "avaliacoes_por_fornecedor_mes": 4.024223881041481,
+      "avaliacoes_por_fornecedor_mes": 3.9956203744462977,
       "prop_sem_avaliacao_coorte_12_23m": 0.0
     },
     {
-      "compatibilidade": 0.04500703756823119,
+      "compatibilidade": 0.04826196046635042,
       "clientes_por_rodada": 1154.0,
-      "avaliacoes_por_fornecedor_mes": 0.40357326986864867,
-      "prop_sem_avaliacao_coorte_12_23m": 0.2900675675675676
+      "avaliacoes_por_fornecedor_mes": 0.4026606988435346,
+      "prop_sem_avaliacao_coorte_12_23m": 0.34231981981981985
     },
     {
-      "compatibilidade": 0.04500703756823119,
-      "clientes_por_rodada": 2155.0,
-      "avaliacoes_por_fornecedor_mes": 0.7343447788701263,
-      "prop_sem_avaliacao_coorte_12_23m": 0.19110360360360362
+      "compatibilidade": 0.04826196046635042,
+      "clientes_por_rodada": 2167.0,
+      "avaliacoes_por_fornecedor_mes": 0.7295080463797281,
+      "prop_sem_avaliacao_coorte_12_23m": 0.2197972972972973
     },
     {
-      "compatibilidade": 0.04500703756823119,
-      "clientes_por_rodada": 2877.0,
-      "avaliacoes_por_fornecedor_mes": 0.9542164595263738,
-      "prop_sem_avaliacao_coorte_12_23m": 0.1509234234234234
+      "compatibilidade": 0.04826196046635042,
+      "clientes_por_rodada": 2909.0,
+      "avaliacoes_por_fornecedor_mes": 0.9477378145576154,
+      "prop_sem_avaliacao_coorte_12_23m": 0.1795045045045045
     },
     {
-      "compatibilidade": 0.04500703756823119,
-      "clientes_por_rodada": 3521.0,
-      "avaliacoes_por_fornecedor_mes": 1.1440227065754858,
-      "prop_sem_avaliacao_coorte_12_23m": 0.13234234234234235
+      "compatibilidade": 0.04826196046635042,
+      "clientes_por_rodada": 3595.0,
+      "avaliacoes_por_fornecedor_mes": 1.150850633565478,
+      "prop_sem_avaliacao_coorte_12_23m": 0.14412162162162162
     },
     {
-      "compatibilidade": 0.04500703756823119,
-      "clientes_por_rodada": 3325.0,
-      "avaliacoes_por_fornecedor_mes": 1.091507460111644,
-      "prop_sem_avaliacao_coorte_12_23m": 0.12907657657657656
+      "compatibilidade": 0.04826196046635042,
+      "clientes_por_rodada": 3374.0,
+      "avaliacoes_por_fornecedor_mes": 1.0908575784466295,
+      "prop_sem_avaliacao_coorte_12_23m": 0.1375225225225225
     }
   ],
   "sementes": [
@@ -318,9 +296,11 @@
     "u0": 2.5,
     "tau": 5.0,
     "gamma": 0.6,
+    "sigma_atratividade": 0.15,
+    "sigma_percepcao": 0.1,
     "p_review": 0.7,
     "churn": 0.02,
     "capacidade": 6
   },
-  "segundos": 303.2
+  "segundos": 272.7
 }

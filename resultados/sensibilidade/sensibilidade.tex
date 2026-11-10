@@ -2,60 +2,68 @@
 \centering
 \caption{Sensibilidade das comparações primárias (um parâmetro por vez)}
 \label{tab:sensibilidade}
-\begin{tabular}{lrrrrrrrrrrr}
+\begin{tabular}{lrrrrrrrrrrrr}
 \hline
-\textbf{cenario} & \textbf{parametro} & \textbf{valor} & \textbf{comparacao} & \textbf{delta\_rmst\_alta} & \textbf{rmst\_ic95\_inf} & \textbf{rmst\_ic95\_sup} & \textbf{p\_holm\_H1} & \textbf{H1\_sustentada} & \textbf{delta\_ndcg10} & \textbf{ndcg\_ic90\_inf} & \textbf{H2\_sustentada} \\
+\textbf{cenario} & \textbf{parametro} & \textbf{valor} & \textbf{comparacao} & \textbf{delta\_rmst\_alta} & \textbf{rmst\_ic95\_inf} & \textbf{rmst\_ic95\_sup} & \textbf{p\_holm\_H1} & \textbf{H1\_sustentada} & \textbf{delta\_ndcg10} & \textbf{ndcg\_ic90\_inf} & \textbf{H2\_sustentada} & \textbf{delta\_cif\_alta} \\
 \hline
-central & central & -- & C vs B & -1,0722 & -1,1558 & -0,9854 & 0,0020 & Sim & 0,0112 & 0,0108 & Sim \\
-central & central & -- & D vs B & -0,7811 & -0,8633 & -0,7020 & 0,0020 & Sim & 0,0005 & 0,0003 & Sim \\
-taxa\_entrada\_mensal=0.005 & taxa\_entrada\_mensal & 0,0050 & C vs B & -0,0914 & -0,1230 & -0,0613 & 0,0020 & Sim & 0,0018 & 0,0014 & Sim \\
-taxa\_entrada\_mensal=0.005 & taxa\_entrada\_mensal & 0,0050 & D vs B & -0,0877 & -0,1073 & -0,0678 & 0,0020 & Sim & -0,0040 & -0,0042 & Sim \\
-taxa\_entrada\_mensal=0.01 & taxa\_entrada\_mensal & 0,0100 & C vs B & -0,2480 & -0,2879 & -0,2036 & 0,0020 & Sim & 0,0045 & 0,0039 & Sim \\
-taxa\_entrada\_mensal=0.01 & taxa\_entrada\_mensal & 0,0100 & D vs B & -0,2042 & -0,2401 & -0,1678 & 0,0020 & Sim & -0,0046 & -0,0049 & Sim \\
-taxa\_entrada\_mensal=0.015 & taxa\_entrada\_mensal & 0,0150 & C vs B & -0,7472 & -0,8045 & -0,6795 & 0,0020 & Sim & 0,0089 & 0,0086 & Sim \\
-taxa\_entrada\_mensal=0.015 & taxa\_entrada\_mensal & 0,0150 & D vs B & -0,5446 & -0,6154 & -0,4713 & 0,0020 & Sim & -0,0014 & -0,0017 & Sim \\
-taxa\_entrada\_mensal=0.02 & taxa\_entrada\_mensal & 0,0200 & C vs B & -1,9591 & -2,1666 & -1,7542 & 0,0020 & Sim & 0,0169 & 0,0159 & Sim \\
-taxa\_entrada\_mensal=0.02 & taxa\_entrada\_mensal & 0,0200 & D vs B & -1,3619 & -1,5582 & -1,1681 & 0,0020 & Sim & 0,0046 & 0,0039 & Sim \\
-churn\_mensal=0.0 & churn\_mensal & 0,0000 & C vs B & -19,1238 & -19,4605 & -18,7865 & 0,0020 & Sim & 0,0339 & 0,0331 & Sim \\
-churn\_mensal=0.0 & churn\_mensal & 0,0000 & D vs B & -19,0220 & -19,2522 & -18,7552 & 0,0020 & Sim & -0,0024 & -0,0033 & Sim \\
-churn\_mensal=0.01 & churn\_mensal & 0,0100 & C vs B & -7,6324 & -8,0361 & -7,2352 & 0,0020 & Sim & 0,0308 & 0,0300 & Sim \\
-churn\_mensal=0.01 & churn\_mensal & 0,0100 & D vs B & -7,1252 & -7,5478 & -6,7076 & 0,0020 & Sim & 0,0120 & 0,0112 & Sim \\
-churn\_mensal=0.03 & churn\_mensal & 0,0300 & C vs B & -0,2002 & -0,2210 & -0,1794 & 0,0020 & Sim & 0,0058 & 0,0056 & Sim \\
-churn\_mensal=0.03 & churn\_mensal & 0,0300 & D vs B & -0,0930 & -0,1174 & -0,0631 & 0,0020 & Sim & -0,0016 & -0,0018 & Sim \\
-churn\_mensal=0.04 & churn\_mensal & 0,0400 & C vs B & -0,0648 & -0,0807 & -0,0464 & 0,0020 & Sim & 0,0047 & 0,0045 & Sim \\
-churn\_mensal=0.04 & churn\_mensal & 0,0400 & D vs B & -0,0145 & -0,0228 & -0,0078 & 0,0020 & Sim & -0,0014 & -0,0015 & Sim \\
-gamma=0.4 & gamma & 0,4000 & C vs B & -1,3773 & -1,5045 & -1,2448 & 0,0020 & Sim & 0,0106 & 0,0102 & Sim \\
-gamma=0.4 & gamma & 0,4000 & D vs B & -0,9318 & -1,0333 & -0,8236 & 0,0020 & Sim & 0,0016 & 0,0012 & Sim \\
-gamma=0.8 & gamma & 0,8000 & C vs B & -0,8763 & -0,9947 & -0,7795 & 0,0020 & Sim & 0,0117 & 0,0112 & Sim \\
-gamma=0.8 & gamma & 0,8000 & D vs B & -0,6390 & -0,7335 & -0,5670 & 0,0020 & Sim & 0,0000 & -0,0004 & Sim \\
-tau=2.0 & tau & 2,0000 & C vs B & -1,0485 & -1,2473 & -0,8720 & 0,0020 & Sim & -0,0274 & -0,0283 & Não \\
-tau=2.0 & tau & 2,0000 & D vs B & -1,4613 & -1,5855 & -1,3417 & 0,0020 & Sim & 0,0028 & 0,0023 & Sim \\
-tau=10.0 & tau & 10,0000 & C vs B & -0,8771 & -0,9641 & -0,7921 & 0,0020 & Sim & 0,0143 & 0,0139 & Sim \\
-tau=10.0 & tau & 10,0000 & D vs B & -0,6439 & -0,7334 & -0,5586 & 0,0020 & Sim & 0,0001 & -0,0003 & Sim \\
-u0=1.5 & u0 & 1,5000 & C vs B & -0,8440 & -0,9006 & -0,7891 & 0,0020 & Sim & 0,0082 & 0,0076 & Sim \\
-u0=1.5 & u0 & 1,5000 & D vs B & -0,5949 & -0,6672 & -0,5239 & 0,0020 & Sim & -0,0002 & -0,0007 & Sim \\
-u0=3.5 & u0 & 3,5000 & C vs B & -1,2806 & -1,3923 & -1,1657 & 0,0020 & Sim & 0,0130 & 0,0125 & Sim \\
-u0=3.5 & u0 & 3,5000 & D vs B & -0,9623 & -1,0631 & -0,8637 & 0,0020 & Sim & 0,0014 & 0,0010 & Sim \\
-p\_review=0.5 & p\_review & 0,5000 & C vs B & -0,9788 & -1,0593 & -0,8938 & 0,0020 & Sim & 0,0177 & 0,0169 & Sim \\
-p\_review=0.5 & p\_review & 0,5000 & D vs B & -0,7286 & -0,8223 & -0,6210 & 0,0020 & Sim & 0,0020 & 0,0015 & Sim \\
-p\_review=0.9 & p\_review & 0,9000 & C vs B & -1,0039 & -1,0716 & -0,9303 & 0,0020 & Sim & 0,0070 & 0,0066 & Sim \\
-p\_review=0.9 & p\_review & 0,9000 & D vs B & -0,7198 & -0,8042 & -0,6315 & 0,0020 & Sim & -0,0007 & -0,0011 & Sim \\
-sigma\_ruido=0.05 & sigma\_ruido & 0,0500 & C vs B & -1,1112 & -1,1910 & -1,0266 & 0,0020 & Sim & 0,0122 & 0,0117 & Sim \\
-sigma\_ruido=0.05 & sigma\_ruido & 0,0500 & D vs B & -0,8177 & -0,8937 & -0,7339 & 0,0020 & Sim & 0,0008 & 0,0004 & Sim \\
-sigma\_ruido=0.2 & sigma\_ruido & 0,2000 & C vs B & -0,7212 & -0,8153 & -0,6286 & 0,0020 & Sim & 0,0107 & 0,0103 & Sim \\
-sigma\_ruido=0.2 & sigma\_ruido & 0,2000 & D vs B & -0,5022 & -0,5673 & -0,4379 & 0,0020 & Sim & -0,0011 & -0,0016 & Sim \\
-kappa\_priori=1 & kappa\_priori & 1,0000 & C vs B & -0,9842 & -1,0621 & -0,9102 & 0,0020 & Sim & 0,0116 & 0,0111 & Sim \\
-kappa\_priori=1 & kappa\_priori & 1,0000 & D vs B & -0,7811 & -0,8633 & -0,7020 & 0,0020 & Sim & 0,0005 & 0,0003 & Sim \\
-kappa\_priori=5 & kappa\_priori & 5,0000 & C vs B & -1,1197 & -1,2014 & -1,0386 & 0,0020 & Sim & 0,0090 & 0,0085 & Sim \\
-kappa\_priori=5 & kappa\_priori & 5,0000 & D vs B & -0,7811 & -0,8633 & -0,7020 & 0,0020 & Sim & 0,0005 & 0,0003 & Sim \\
-rho=0.1 & rho & 0,1000 & C vs B & -0,9522 & -1,0600 & -0,8376 & 0,0020 & Sim & 0,0112 & 0,0107 & Sim \\
-rho=0.1 & rho & 0,1000 & D vs B & -0,3966 & -0,4748 & -0,3085 & 0,0020 & Sim & -0,0003 & -0,0005 & Sim \\
-rho=0.3 & rho & 0,3000 & C vs B & -1,0128 & -1,1036 & -0,9218 & 0,0020 & Sim & 0,0111 & 0,0107 & Sim \\
-rho=0.3 & rho & 0,3000 & D vs B & -0,9614 & -1,0474 & -0,8723 & 0,0020 & Sim & -0,0035 & -0,0040 & Sim \\
-janela\_novidade\_w=6 & janela\_novidade\_w & 6,0000 & C vs B & -1,0702 & -1,1661 & -0,9769 & 0,0020 & Sim & 0,0108 & 0,0103 & Sim \\
-janela\_novidade\_w=6 & janela\_novidade\_w & 6,0000 & D vs B & -1,0692 & -1,1867 & -0,9618 & 0,0020 & Sim & -0,0002 & -0,0007 & Sim \\
-janela\_novidade\_w=18 & janela\_novidade\_w & 18,0000 & C vs B & -1,0328 & -1,1026 & -0,9553 & 0,0020 & Sim & 0,0112 & 0,0107 & Sim \\
-janela\_novidade\_w=18 & janela\_novidade\_w & 18,0000 & D vs B & -0,4145 & -0,4998 & -0,3261 & 0,0020 & Sim & 0,0011 & 0,0008 & Sim \\
+central & central & -- & C vs B & -1,3000 & -1,4656 & -1,1525 & 0,0020 & Sim & -0,0154 & -0,0161 & Sim & 0,0243 \\
+central & central & -- & D vs B & -1,0806 & -1,2206 & -0,9467 & 0,0020 & Sim & 0,0019 & 0,0013 & Sim & 0,0207 \\
+taxa\_entrada\_mensal=0.005 & taxa\_entrada\_mensal & 0,0050 & C vs B & -0,1193 & -0,1689 & -0,0727 & 0,0020 & Sim & -0,0176 & -0,0183 & Sim & 0,0022 \\
+taxa\_entrada\_mensal=0.005 & taxa\_entrada\_mensal & 0,0050 & D vs B & -0,1317 & -0,1676 & -0,0933 & 0,0020 & Sim & -0,0044 & -0,0046 & Sim & 0,0041 \\
+taxa\_entrada\_mensal=0.01 & taxa\_entrada\_mensal & 0,0100 & C vs B & -0,3020 & -0,3601 & -0,2462 & 0,0020 & Sim & -0,0193 & -0,0203 & Não & 0,0044 \\
+taxa\_entrada\_mensal=0.01 & taxa\_entrada\_mensal & 0,0100 & D vs B & -0,3041 & -0,3827 & -0,2310 & 0,0020 & Sim & -0,0046 & -0,0050 & Sim & 0,0054 \\
+taxa\_entrada\_mensal=0.015 & taxa\_entrada\_mensal & 0,0150 & C vs B & -1,0106 & -1,1356 & -0,9011 & 0,0020 & Sim & -0,0173 & -0,0182 & Sim & 0,0204 \\
+taxa\_entrada\_mensal=0.015 & taxa\_entrada\_mensal & 0,0150 & D vs B & -0,8726 & -0,9630 & -0,7851 & 0,0020 & Sim & -0,0005 & -0,0008 & Sim & 0,0189 \\
+taxa\_entrada\_mensal=0.02 & taxa\_entrada\_mensal & 0,0200 & C vs B & -2,7742 & -3,0068 & -2,5109 & 0,0020 & Sim & -0,0101 & -0,0109 & Sim & 0,0606 \\
+taxa\_entrada\_mensal=0.02 & taxa\_entrada\_mensal & 0,0200 & D vs B & -2,1759 & -2,4113 & -1,9348 & 0,0020 & Sim & 0,0066 & 0,0058 & Sim & 0,0457 \\
+churn\_mensal=0.01 & churn\_mensal & 0,0100 & C vs B & -9,0099 & -9,3150 & -8,6614 & 0,0020 & Sim & 0,0000 & -0,0011 & Sim & 0,2736 \\
+churn\_mensal=0.01 & churn\_mensal & 0,0100 & D vs B & -8,7320 & -8,9814 & -8,4477 & 0,0020 & Sim & 0,0138 & 0,0131 & Sim & 0,2749 \\
+churn\_mensal=0.03 & churn\_mensal & 0,0300 & C vs B & -0,2672 & -0,3220 & -0,2095 & 0,0020 & Sim & -0,0162 & -0,0170 & Sim & 0,0066 \\
+churn\_mensal=0.03 & churn\_mensal & 0,0300 & D vs B & -0,1420 & -0,1617 & -0,1228 & 0,0020 & Sim & -0,0014 & -0,0016 & Sim & 0,0033 \\
+churn\_mensal=0.04 & churn\_mensal & 0,0400 & C vs B & -0,0711 & -0,0842 & -0,0554 & 0,0020 & Sim & -0,0137 & -0,0144 & Sim & 0,0044 \\
+churn\_mensal=0.04 & churn\_mensal & 0,0400 & D vs B & -0,0262 & -0,0444 & -0,0095 & 0,0098 & Sim & -0,0013 & -0,0014 & Sim & 0,0012 \\
+gamma=0.4 & gamma & 0,4000 & C vs B & -1,7216 & -1,8789 & -1,5666 & 0,0020 & Sim & -0,0152 & -0,0161 & Sim & 0,0305 \\
+gamma=0.4 & gamma & 0,4000 & D vs B & -1,3823 & -1,5164 & -1,2439 & 0,0020 & Sim & 0,0030 & 0,0024 & Sim & 0,0231 \\
+gamma=0.8 & gamma & 0,8000 & C vs B & -1,2046 & -1,3400 & -1,0770 & 0,0020 & Sim & -0,0147 & -0,0154 & Sim & 0,0240 \\
+gamma=0.8 & gamma & 0,8000 & D vs B & -1,0318 & -1,1529 & -0,9344 & 0,0020 & Sim & 0,0014 & 0,0010 & Sim & 0,0207 \\
+tau=2.0 & tau & 2,0000 & C vs B & -1,6611 & -1,8713 & -1,4425 & 0,0020 & Sim & -0,0440 & -0,0452 & Não & 0,0240 \\
+tau=2.0 & tau & 2,0000 & D vs B & -1,9579 & -2,1269 & -1,7746 & 0,0020 & Sim & 0,0045 & 0,0040 & Sim & 0,0357 \\
+tau=10.0 & tau & 10,0000 & C vs B & -1,1545 & -1,2457 & -1,0793 & 0,0020 & Sim & -0,0139 & -0,0145 & Sim & 0,0203 \\
+tau=10.0 & tau & 10,0000 & D vs B & -0,9193 & -0,9887 & -0,8558 & 0,0020 & Sim & 0,0012 & 0,0007 & Sim & 0,0165 \\
+u0=1.5 & u0 & 1,5000 & C vs B & -1,2518 & -1,3820 & -1,1277 & 0,0020 & Sim & -0,0188 & -0,0197 & Sim & 0,0243 \\
+u0=1.5 & u0 & 1,5000 & D vs B & -0,9756 & -1,0988 & -0,8717 & 0,0020 & Sim & 0,0013 & 0,0008 & Sim & 0,0167 \\
+u0=3.5 & u0 & 3,5000 & C vs B & -1,7110 & -1,8526 & -1,5721 & 0,0020 & Sim & -0,0117 & -0,0123 & Sim & 0,0327 \\
+u0=3.5 & u0 & 3,5000 & D vs B & -1,4573 & -1,5796 & -1,3289 & 0,0020 & Sim & 0,0030 & 0,0026 & Sim & 0,0312 \\
+p\_review=0.5 & p\_review & 0,5000 & C vs B & -1,3098 & -1,4160 & -1,2057 & 0,0020 & Sim & -0,0080 & -0,0087 & Sim & 0,0252 \\
+p\_review=0.5 & p\_review & 0,5000 & D vs B & -1,0783 & -1,2288 & -0,9387 & 0,0020 & Sim & 0,0031 & 0,0026 & Sim & 0,0215 \\
+p\_review=0.9 & p\_review & 0,9000 & C vs B & -1,2835 & -1,4260 & -1,1480 & 0,0020 & Sim & -0,0205 & -0,0211 & Não & 0,0255 \\
+p\_review=0.9 & p\_review & 0,9000 & D vs B & -1,0374 & -1,1618 & -0,9349 & 0,0020 & Sim & 0,0007 & 0,0003 & Sim & 0,0196 \\
+sigma\_ruido=0.05 & sigma\_ruido & 0,0500 & C vs B & -1,4579 & -1,6682 & -1,2469 & 0,0020 & Sim & -0,0142 & -0,0151 & Sim & 0,0243 \\
+sigma\_ruido=0.05 & sigma\_ruido & 0,0500 & D vs B & -1,1626 & -1,3470 & -0,9886 & 0,0020 & Sim & 0,0020 & 0,0014 & Sim & 0,0186 \\
+sigma\_ruido=0.2 & sigma\_ruido & 0,2000 & C vs B & -0,8751 & -0,9561 & -0,7954 & 0,0020 & Sim & -0,0172 & -0,0179 & Sim & 0,0180 \\
+sigma\_ruido=0.2 & sigma\_ruido & 0,2000 & D vs B & -0,6755 & -0,7488 & -0,6029 & 0,0020 & Sim & -0,0006 & -0,0010 & Sim & 0,0120 \\
+sigma\_atratividade=0.0 & sigma\_atratividade & 0,0000 & C vs B & -1,3950 & -1,5136 & -1,2675 & 0,0020 & Sim & 0,0127 & 0,0122 & Sim & 0,0245 \\
+sigma\_atratividade=0.0 & sigma\_atratividade & 0,0000 & D vs B & -1,0237 & -1,1367 & -0,9124 & 0,0020 & Sim & 0,0022 & 0,0018 & Sim & 0,0200 \\
+sigma\_atratividade=0.1 & sigma\_atratividade & 0,1000 & C vs B & -1,4390 & -1,5773 & -1,3089 & 0,0020 & Sim & -0,0011 & -0,0018 & Sim & 0,0258 \\
+sigma\_atratividade=0.1 & sigma\_atratividade & 0,1000 & D vs B & -1,0989 & -1,2046 & -1,0037 & 0,0020 & Sim & 0,0020 & 0,0015 & Sim & 0,0163 \\
+sigma\_atratividade=0.3 & sigma\_atratividade & 0,3000 & C vs B & -1,1636 & -1,3997 & -0,9513 & 0,0020 & Sim & -0,0638 & -0,0652 & Não & 0,0153 \\
+sigma\_atratividade=0.3 & sigma\_atratividade & 0,3000 & D vs B & -1,2648 & -1,4703 & -1,0719 & 0,0020 & Sim & 0,0009 & 0,0004 & Sim & 0,0261 \\
+sigma\_percepcao=0.0 & sigma\_percepcao & 0,0000 & C vs B & -1,3985 & -1,5147 & -1,3042 & 0,0020 & Sim & -0,0145 & -0,0153 & Sim & 0,0301 \\
+sigma\_percepcao=0.0 & sigma\_percepcao & 0,0000 & D vs B & -1,1040 & -1,2387 & -0,9966 & 0,0020 & Sim & 0,0018 & 0,0012 & Sim & 0,0241 \\
+sigma\_percepcao=0.2 & sigma\_percepcao & 0,2000 & C vs B & -1,3942 & -1,5040 & -1,2893 & 0,0020 & Sim & -0,0176 & -0,0183 & Sim & 0,0243 \\
+sigma\_percepcao=0.2 & sigma\_percepcao & 0,2000 & D vs B & -1,0813 & -1,1725 & -0,9920 & 0,0020 & Sim & 0,0019 & 0,0014 & Sim & 0,0190 \\
+kappa\_priori=1 & kappa\_priori & 1,0000 & C vs B & -1,1407 & -1,3122 & -0,9431 & 0,0020 & Sim & -0,0143 & -0,0151 & Sim & 0,0193 \\
+kappa\_priori=1 & kappa\_priori & 1,0000 & D vs B & -1,0806 & -1,2206 & -0,9467 & 0,0020 & Sim & 0,0019 & 0,0013 & Sim & 0,0207 \\
+kappa\_priori=5 & kappa\_priori & 5,0000 & C vs B & -1,4574 & -1,6002 & -1,3324 & 0,0020 & Sim & -0,0181 & -0,0187 & Sim & 0,0279 \\
+kappa\_priori=5 & kappa\_priori & 5,0000 & D vs B & -1,0806 & -1,2206 & -0,9467 & 0,0020 & Sim & 0,0019 & 0,0013 & Sim & 0,0207 \\
+rho=0.1 & rho & 0,1000 & C vs B & -1,4164 & -1,5814 & -1,2633 & 0,0020 & Sim & -0,0151 & -0,0158 & Sim & 0,0275 \\
+rho=0.1 & rho & 0,1000 & D vs B & -0,6723 & -0,7979 & -0,5546 & 0,0020 & Sim & 0,0007 & 0,0004 & Sim & 0,0133 \\
+rho=0.3 & rho & 0,3000 & C vs B & -1,3257 & -1,5151 & -1,1648 & 0,0020 & Sim & -0,0153 & -0,0158 & Sim & 0,0244 \\
+rho=0.3 & rho & 0,3000 & D vs B & -1,4097 & -1,5649 & -1,2855 & 0,0020 & Sim & -0,0025 & -0,0030 & Sim & 0,0263 \\
+janela\_novidade\_w=6 & janela\_novidade\_w & 6,0000 & C vs B & -1,4221 & -1,5740 & -1,2733 & 0,0020 & Sim & -0,0154 & -0,0161 & Sim & 0,0226 \\
+janela\_novidade\_w=6 & janela\_novidade\_w & 6,0000 & D vs B & -1,5637 & -1,7232 & -1,4317 & 0,0020 & Sim & 0,0011 & 0,0005 & Sim & 0,0271 \\
+janela\_novidade\_w=18 & janela\_novidade\_w & 18,0000 & C vs B & -1,2528 & -1,4121 & -1,1213 & 0,0020 & Sim & -0,0151 & -0,0161 & Sim & 0,0226 \\
+janela\_novidade\_w=18 & janela\_novidade\_w & 18,0000 & D vs B & -0,5788 & -0,6633 & -0,4992 & 0,0020 & Sim & 0,0021 & 0,0019 & Sim & 0,0112 \\
 \hline
 \end{tabular}
 \end{table}

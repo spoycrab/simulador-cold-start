@@ -1,4 +1,7 @@
-"""Análise de sensibilidade: um parâmetro por vez, em torno do cenário central.
+"""Análise de sensibilidade auxiliar: um parâmetro por vez, em torno do cenário central.
+
+A análise principal de sensibilidade é conjunta (triagem de Morris, módulo
+`morris`, e níveis de congestão, módulo `congestao`); esta fica como auxiliar.
 
 Cada cenário altera um único parâmetro da grade `sensibilidade` do YAML,
 mantendo os demais (inclusive a demanda e a compatibilidade calibradas) no
@@ -37,6 +40,8 @@ PARAMETROS = {
     "u0": ("u0", "Opção externa u₀"),
     "p_review": ("p_review", "Probabilidade de avaliação"),
     "sigma_ruido": ("sigma", "Ruído das avaliações σ"),
+    "sigma_atratividade": ("sigma_atratividade", "Atratividade σₐ"),
+    "sigma_percepcao": ("sigma_percepcao", "Ruído de percepção σₑ"),
     "kappa_priori": ("kappa", "Força da priori κ (C)"),
     "rho": ("rho", "Fração reservada ρ (D)"),
     "janela_novidade_w": ("janela_novidade", "Janela de novidade w (D)"),
@@ -106,6 +111,8 @@ def resumir_sensibilidade(config: dict, pasta: Path, lista: list[dict]) -> pd.Da
         for (a, b), ph in zip(primarias, p_holm):
             rmst = resumo_diferenca(diferencas_pareadas(df, "rmst_alta", a, b))
             ndcg = resumo_diferenca(diferencas_pareadas(df, "ndcg10", a, b))
+            cif = (resumo_diferenca(diferencas_pareadas(df, "cif_contratacao_h_alta", a, b))
+                   if "cif_contratacao_h_alta" in df else {"diferenca_media": float("nan")})
             linhas.append({
                 "cenario": cenario["nome"], "parametro": cenario["parametro"],
                 "valor": cenario["valor"], "comparacao": f"{a} vs {b}",
@@ -114,6 +121,7 @@ def resumir_sensibilidade(config: dict, pasta: Path, lista: list[dict]) -> pd.Da
                 "H1_sustentada": bool(ph < 0.05 and rmst["diferenca_media"] < 0),
                 "delta_ndcg10": ndcg["diferenca_media"], "ndcg_ic90_inf": ndcg["ic90_inf"],
                 "H2_sustentada": bool(ndcg["ic90_inf"] > -delta),
+                "delta_cif_alta": cif["diferenca_media"],
             })
     tabela = pd.DataFrame(linhas)
     salvar_tabela(tabela, saida, "sensibilidade",

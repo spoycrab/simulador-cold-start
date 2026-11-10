@@ -1,18 +1,18 @@
 \begin{table}[ht]
 \centering
-\caption{Momentos observados e simulados (política de referência D, parâmetros calibrados)}
+\caption{Verificação interna: momentos observados e simulados (política de referência D, parâmetros calibrados, 10 sementes)}
 \label{tab:validacao}
-\begin{tabular}{lrrrrrr}
+\begin{tabular}{lrrrrrrr}
 \hline
-\textbf{Momento} & \textbf{Papel} & \textbf{Dados} & \textbf{Simulado} & \textbf{IC95 inf.} & \textbf{IC95 sup.} & \textbf{Diferença relativa (\%)} \\
+\textbf{Momento} & \textbf{Papel} & \textbf{Dados} & \textbf{Simulado} & \textbf{IC95 inf.} & \textbf{IC95 sup.} & \textbf{Erro absoluto} & \textbf{Erro relativo (\%)} \\
 \hline
-avaliacoes\_por\_fornecedor\_mes & calibração & 1,090 & 1,082 & 1,064 & 1,100 & -0,749 \\
-prop\_sem\_avaliacao\_coorte\_12\_23m & calibração & 0,137 & 0,126 & 0,108 & 0,144 & -7,688 \\
-mediana\_avaliacoes\_coorte\_12\_23m & validação & 18,000 & 6,950 & 6,206 & 7,694 & -61,389 \\
-prop\_1a\_avaliacao\_ate\_3m\_coorte\_12\_23m & validação & 0,697 & 0,514 & 0,493 & 0,535 & -26,183 \\
-mediana\_meses\_ate\_1a\_avaliacao\_coorte\_12\_23m & validação & 0,296 & 2,400 & 2,174 & 2,626 & 711,667 \\
-prop\_sem\_avaliacao\_janela & referência (não comparável) & 0,436 & 0,119 & 0,114 & 0,124 & -72,693 \\
-mediana\_meses\_ate\_1a\_avaliacao & referência (não comparável) & 1,511 & 2,500 & 2,500 & 2,500 & 65,421 \\
+avaliacoes\_por\_fornecedor\_mes & calibração & 1,090 & 1,078 & 1,059 & 1,098 & -0,012 & -1,105 \\
+prop\_sem\_avaliacao\_coorte\_12\_23m & calibração & 0,137 & 0,150 & 0,137 & 0,164 & 0,013 & 9,771 \\
+mediana\_avaliacoes\_coorte\_12\_23m & verificação interna & 18,000 & 6,450 & 5,726 & 7,174 & -11,550 & -64,167 \\
+prop\_1a\_avaliacao\_ate\_3m\_coorte\_12\_23m & verificação interna & 0,697 & 0,501 & 0,479 & 0,522 & -0,196 & -28,143 \\
+prop\_sem\_avaliacao\_janela & referência (não comparável) & 0,436 & 0,142 & 0,137 & 0,147 & -0,294 & -67,503 \\
+mediana\_meses\_ate\_1a\_avaliacao\_coorte\_12\_23m & referência (não comparável) & 0,296 & 2,450 & 2,337 & 2,563 & 2,154 & 728,576 \\
+mediana\_meses\_ate\_1a\_avaliacao & referência (não comparável) & 1,511 & 2,500 & 2,500 & 2,500 & 0,989 & 65,421 \\
 \hline
 \end{tabular}
 \end{table}

@@ -65,6 +65,7 @@ def rodar_semente(args: tuple) -> list[dict]:
         linha = {"semente": semente, "politica": politica}
         linha.update(metricas.metricas_execucao(est, p))
         linha["_km_alta"] = metricas.curva_km_alta(est, p).tolist()
+        linha["_cif_alta"] = metricas.curva_cif_alta(est, p).tolist()
         linhas.append(linha)
     return linhas
 
@@ -106,6 +107,9 @@ def executar_experimento(config: dict, pasta_resultados, n_sementes: int | None,
     km = [{"semente": l["semente"], "politica": l["politica"], "t": t, "S": s}
           for l in linhas for t, s in enumerate(l["_km_alta"])]
     pd.DataFrame(km).to_csv(saida / "km_alta.csv", index=False)
+    cif = [{"semente": l["semente"], "politica": l["politica"], "t": t, "F": f}
+           for l in linhas for t, f in enumerate(l["_cif_alta"])]
+    pd.DataFrame(cif).to_csv(saida / "cif_alta.csv", index=False)
     df = pd.DataFrame([{k: v for k, v in l.items() if not k.startswith("_")} for l in linhas])
     df.to_csv(saida / "metricas_por_semente.csv", index=False)
     registro = p.resumo()

@@ -52,6 +52,10 @@ class Fluxos:
         self.z_avaliacao = rng.standard_normal((self.N_max, maximo), dtype=np.float32)
         self.u_atraso = rng.random((self.N_max, maximo), dtype=np.float32)
 
+        # Atratividade fixa de cada prestador (qualidade percebida): normal padrão, escalada
+        # por sigma_atratividade no motor. Sorteada por último, para não alterar os fluxos acima.
+        self.z_atratividade = rng.standard_normal(self.N_max)
+
         # Consultas por rodada e faixa (determinísticas, para uma calibração suave)
         por_faixa = np.round(p.clientes_por_rodada * p.participacao_demanda).astype(np.int64)
         self.consultas = np.tile(por_faixa, (TT, 1))

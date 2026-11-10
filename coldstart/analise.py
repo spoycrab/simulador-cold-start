@@ -38,7 +38,10 @@ HIPOTESES = {
 METRICAS = {
     "rmst_alta": "RMST do TTFC, novatos de alta qualidade (rodadas)",
     "rmst_todos": "RMST do TTFC, todos os novatos (rodadas)",
-    "p_contratacao_ate_h_alta": "P(contratação até h), alta qualidade",
+    "p_contratacao_ate_h_alta": "P(contratação até h), alta qualidade (KM, saída censurada)",
+    "cif_contratacao_h_alta": "Contratação antes da saída até h, alta qualidade (incidência cumulativa)",
+    "cif_saida_sem_contrato_h_alta": "Saída sem contratação até h, alta qualidade",
+    "cif_contratacao_h_todos": "Contratação antes da saída até h, todos os novatos",
     "descoberta_alta": "Descoberta de novatos de alta qualidade",
     "ndcg10": "NDCG@10",
     "precisao10": "Precision@10",
@@ -205,6 +208,29 @@ def figura_kaplan_meier(km: pd.DataFrame, destino: Path, horizonte: int) -> None
     plt.close(fig)
 
 
+def figura_incidencia(cif: pd.DataFrame, destino: Path, horizonte: int) -> None:
+    """Incidência cumulativa média da contratação antes da saída (riscos competitivos)."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    fig, ax = plt.subplots(figsize=(6.0, 3.4))
+    for politica in [p for p in POLITICAS_FIGURA_KM if p in set(cif["politica"])]:
+        curvas = cif[cif["politica"] == politica].pivot(index="semente", columns="t", values="F")
+        media = curvas.mean().to_numpy()
+        t = curvas.columns.to_numpy()
+        ax.step(t, media, where="post", color=CORES[politica], linestyle=ESTILOS[politica],
+                linewidth=2, label=POLITICAS_ROTULO[politica])
+    ax.set_xlim(0, horizonte + 1)
+    ax.set_ylim(0, 1.02)
+    ax.set_xlabel("Rodadas (meses) desde a entrada", fontsize=9, color="#2b2b28")
+    ax.set_ylabel("Proporção contratada antes de sair", fontsize=9, color="#2b2b28")
+    _estilo_eixos(ax)
+    ax.legend(frameon=False, fontsize=8, loc="lower right")
+    fig.tight_layout()
+    fig.savefig(destino)
+    plt.close(fig)
+
+
 def figura_fronteira(comparacoes: pd.DataFrame, destino: Path, delta: float) -> None:
     """Diferença de NDCG@10 (cliente) contra diferença de RMST (prestador), em relação a B."""
     import matplotlib
@@ -290,5 +316,8 @@ def executar_analise(config: dict, pasta_resultados: str | Path) -> dict:
 
     figura_kaplan_meier(km, saida / "fig_kaplan_meier_alta.pdf", int(parametros["horizonte_h"]))
     figura_fronteira(comparacoes, saida / "fig_fronteira.pdf", delta)
+    if (entrada / "cif_alta.csv").exists():
+        figura_incidencia(pd.read_csv(entrada / "cif_alta.csv"), saida / "fig_incidencia_alta.pdf",
+                          int(parametros["horizonte_h"]))
     return {"hipoteses": hipoteses, "comparacoes": comparacoes, "por_politica": por_politica,
             "decomposicao": decomposicao}

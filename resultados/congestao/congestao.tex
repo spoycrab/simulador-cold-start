@@ -1,0 +1,35 @@
+\begin{table}[ht]
+\centering
+\caption{Hipóteses H1 a H4 em três níveis de congestão do mercado (entrada e saída)}
+\label{tab:congestao}
+\begin{tabular}{lrrrrrrrrrrrr}
+\hline
+\textbf{nivel} & \textbf{taxa\_entrada} & \textbf{churn} & \textbf{fornecedores\_ativos\_fim} & \textbf{elegiveis\_por\_consulta} & \textbf{hipotese} & \textbf{comparacao} & \textbf{metrica} & \textbf{diferenca\_media} & \textbf{ic95\_inf} & \textbf{ic95\_sup} & \textbf{ic90\_inf} & \textbf{sustentada} \\
+\hline
+baixa & 0,0100 & 0,0300 & 760,7000 & 8,7252 & H1 & C vs B & rmst\_alta & -0,0789 & -0,0987 & -0,0583 & -0,0956 & Sim \\
+baixa & 0,0100 & 0,0300 & 760,7000 & 8,7252 & H1 & D vs B & rmst\_alta & -0,0603 & -0,0758 & -0,0453 & -0,0730 & Sim \\
+baixa & 0,0100 & 0,0300 & 760,7000 & 8,7252 & H2 & C vs B & ndcg10 & -0,0143 & -0,0148 & -0,0138 & -0,0147 & Sim \\
+baixa & 0,0100 & 0,0300 & 760,7000 & 8,7252 & H2 & D vs B & ndcg10 & -0,0031 & -0,0032 & -0,0030 & -0,0032 & Sim \\
+baixa & 0,0100 & 0,0300 & 760,7000 & 8,7252 & H3 & C vs B & descoberta\_alta & 0,0027 & 0,0012 & 0,0042 & 0,0015 & Sim \\
+baixa & 0,0100 & 0,0300 & 760,7000 & 8,7252 & H3 & D vs B & descoberta\_alta & 0,0030 & 0,0014 & 0,0047 & 0,0017 & Sim \\
+baixa & 0,0100 & 0,0300 & 760,7000 & 8,7252 & H4 & C vs B & gini\_exposicao & 0,0086 & 0,0079 & 0,0092 & 0,0080 & Não \\
+baixa & 0,0100 & 0,0300 & 760,7000 & 8,7252 & H4 & D vs B & gini\_exposicao & -0,0116 & -0,0119 & -0,0112 & -0,0119 & Sim \\
+media & 0,0169 & 0,0200 & 1.739,3333 & 16,9348 & H1 & C vs B & rmst\_alta & -1,2836 & -1,3924 & -1,1828 & -1,3756 & Sim \\
+media & 0,0169 & 0,0200 & 1.739,3333 & 16,9348 & H1 & D vs B & rmst\_alta & -1,0563 & -1,1390 & -0,9783 & -1,1263 & Sim \\
+media & 0,0169 & 0,0200 & 1.739,3333 & 16,9348 & H2 & C vs B & ndcg10 & -0,0161 & -0,0167 & -0,0154 & -0,0166 & Sim \\
+media & 0,0169 & 0,0200 & 1.739,3333 & 16,9348 & H2 & D vs B & ndcg10 & 0,0010 & 0,0006 & 0,0015 & 0,0006 & Sim \\
+media & 0,0169 & 0,0200 & 1.739,3333 & 16,9348 & H3 & C vs B & descoberta\_alta & 0,0289 & 0,0246 & 0,0335 & 0,0252 & Sim \\
+media & 0,0169 & 0,0200 & 1.739,3333 & 16,9348 & H3 & D vs B & descoberta\_alta & 0,0232 & 0,0192 & 0,0275 & 0,0198 & Sim \\
+media & 0,0169 & 0,0200 & 1.739,3333 & 16,9348 & H4 & C vs B & gini\_exposicao & -0,0502 & -0,0521 & -0,0483 & -0,0519 & Sim \\
+media & 0,0169 & 0,0200 & 1.739,3333 & 16,9348 & H4 & D vs B & gini\_exposicao & -0,0558 & -0,0572 & -0,0545 & -0,0569 & Sim \\
+alta & 0,0200 & 0,0100 & 3.133,6333 & 26,8568 & H1 & C vs B & rmst\_alta & -10,7673 & -11,0057 & -10,5304 & -10,9694 & Sim \\
+alta & 0,0200 & 0,0100 & 3.133,6333 & 26,8568 & H1 & D vs B & rmst\_alta & -10,0265 & -10,2483 & -9,8023 & -10,2156 & Sim \\
+alta & 0,0200 & 0,0100 & 3.133,6333 & 26,8568 & H2 & C vs B & ndcg10 & 0,0051 & 0,0043 & 0,0059 & 0,0044 & Sim \\
+alta & 0,0200 & 0,0100 & 3.133,6333 & 26,8568 & H2 & D vs B & ndcg10 & 0,0172 & 0,0165 & 0,0179 & 0,0166 & Sim \\
+alta & 0,0200 & 0,0100 & 3.133,6333 & 26,8568 & H3 & C vs B & descoberta\_alta & 0,3930 & 0,3823 & 0,4042 & 0,3838 & Sim \\
+alta & 0,0200 & 0,0100 & 3.133,6333 & 26,8568 & H3 & D vs B & descoberta\_alta & 0,3824 & 0,3715 & 0,3935 & 0,3732 & Sim \\
+alta & 0,0200 & 0,0100 & 3.133,6333 & 26,8568 & H4 & C vs B & gini\_exposicao & -0,1261 & -0,1270 & -0,1252 & -0,1269 & Sim \\
+alta & 0,0200 & 0,0100 & 3.133,6333 & 26,8568 & H4 & D vs B & gini\_exposicao & -0,1198 & -0,1205 & -0,1192 & -0,1204 & Sim \\
+\hline
+\end{tabular}
+\end{table}

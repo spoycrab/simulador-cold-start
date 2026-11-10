@@ -10,8 +10,13 @@ Sequência de cada rodada t (um mês):
      (compatíveis e com capacidade) e exibe K;
   5. a posição k é examinada com probabilidade min(1, gamma / log2(1 + k));
   6. o cliente escolhe pelo modelo logit entre os examinados e a opção de
-     não contratar (utilidade u0); quem chega a um fornecedor sem capacidade
-     no mesmo lote não é atendido;
+     não contratar (utilidade u0). A utilidade usa a qualidade PERCEBIDA,
+     q_i + a_i + e_ui, e não a qualidade latente q_i: a_i ~ N(0, sigma_atratividade)
+     é uma atratividade fixa do prestador, independente da qualidade (fotos,
+     local, preço), e e_ui ~ N(0, sigma_percepcao) é um ruído sorteado a cada
+     consulta e posição. Com isso, as contratações medem q + a, e não q. As
+     notas das avaliações e o NDCG continuam usando q_i. Quem chega a um
+     fornecedor sem capacidade no mesmo lote não é atendido;
   7. exames e contratações atualizam o aprendizado da política C;
   8. cada contratação gera uma avaliação com probabilidade p_review, visível
      ao fim da rodada ou da rodada seguinte.
@@ -42,6 +47,7 @@ class Acumuladores:
     soma_ndcg: float = 0.0
     soma_precisao: float = 0.0
     soma_arrependimento: float = 0.0
+    soma_elegiveis: int = 0     # fornecedores compatíveis e com capacidade, somados por consulta
 
 
 @dataclass
@@ -155,6 +161,8 @@ def rodada(est: Estado, t: int, politica: str, p: ParametrosSimulacao, fl: Fluxo
             u_exame = sorteio.random((nq, K))
             u_escolha = sorteio.random(nq)
             u_compat = sorteio.random((nq, len(cand)))
+            # sorteado por último: não altera os sorteios anteriores do lote
+            z_percepcao = sorteio.standard_normal((nq, K))
             if coletar:
                 est.acc.consultas += nq
             if len(cand) == 0:
@@ -173,7 +181,9 @@ def rodada(est: Estado, t: int, politica: str, p: ParametrosSimulacao, fl: Fluxo
             # 5-6. exame e escolha logit com opção externa
             examinado = valida & (u_exame < p_exame)
             q_lista = np.where(valida, est.q[idx], 0.0)
-            util = np.where(examinado, p.tau * q_lista, -np.inf)
+            atratividade = p.sigma_atratividade * fl.z_atratividade[idx]
+            q_percebida = q_lista + np.where(valida, atratividade, 0.0) + p.sigma_percepcao * z_percepcao
+            util = np.where(examinado, p.tau * q_percebida, -np.inf)
             maximo = np.maximum(util.max(axis=1), p.u0)
             pesos = np.exp(util - maximo[:, None])
             peso_externo = np.exp(p.u0 - maximo)
@@ -234,6 +244,7 @@ def _coletar(est, p, cand, elegivel, listas, valida, idx, q_lista,
 
     com_oferta = elegivel.any(axis=1)
     acc.consultas_sem_oferta += int((~com_oferta).sum())
+    acc.soma_elegiveis += int(elegivel.sum())
     q_eleg = np.where(elegivel, est.q[cand][None, :], -np.inf)
     k = min(K, q_eleg.shape[1])
     melhores = -np.sort(-np.partition(q_eleg, q_eleg.shape[1] - k, axis=1)[:, -k:], axis=1)

@@ -9,7 +9,9 @@ Uso (na raiz do projeto, com o ambiente virtual ativo):
     python -m coldstart piloto                precisão Monte Carlo e tempo      (etapa 2)
     python -m coldstart experimento           experimento principal A, B, B2, C, D (etapa 3)
     python -m coldstart analisar              testes, tabelas e figuras         (etapa 3)
-    python -m coldstart sensibilidade         um parâmetro por vez              (etapa 3)
+    python -m coldstart sensibilidade         um parâmetro por vez (auxiliar)   (etapa 3)
+    python -m coldstart morris                sensibilidade global (Morris)
+    python -m coldstart congestao             H1 a H4 em três níveis de congestão
 
 Opções comuns:
     --config  caminho do YAML de parâmetros (padrão: config/parametros.yaml)
@@ -37,7 +39,7 @@ def _argumentos(argv=None) -> argparse.Namespace:
                                      description="Calibração e simulação do cold start de prestadores.")
     parser.add_argument("comando", choices=["auditar", "calibrar", "calibrar-simulador",
                                             "validar", "piloto", "experimento", "analisar",
-                                            "sensibilidade"])
+                                            "sensibilidade", "morris", "congestao"])
     parser.add_argument("--sementes", type=int, default=None,
                         help="número de sementes (experimento e sensibilidade)")
     parser.add_argument("--config", default=None, help="arquivo YAML de parâmetros")
@@ -81,6 +83,10 @@ def main(argv=None) -> int:
                 print(f"Volume: {e['avaliacoes_por_fornecedor_mes']:.3f} "
                       f"(alvo {res['alvos']['avaliacoes_por_fornecedor_mes']:.3f}); "
                       f"{chave}: {e[chave]:.3f} (alvo {res['alvos'][chave]:.3f})")
+                print(f"Fornecedores compatíveis por consulta (aprox.): "
+                      f"{res['elegiveis_por_consulta_aprox']:.1f}")
+                for aviso in res["avisos"]:
+                    print(f"AVISO: {aviso}")
             elif args.comando == "validar":
                 tabela = calibracao_sim.validar(config, pasta_saida, processos)
                 print(tabela.round(3).to_string(index=False))
@@ -112,6 +118,22 @@ def main(argv=None) -> int:
                            "delta_ndcg10", "H2_sustentada"]
                 print(tabela[colunas].round(4).to_string(index=False))
                 print(f"\nResultados em {pasta_saida / 'sensibilidade'}")
+                print(f"Concluído em {time.perf_counter() - inicio:.1f} s.")
+                return 0
+            elif args.comando == "morris":
+                from .morris import executar_morris
+                tabela = executar_morris(config, pasta_saida, args.sementes, processos)
+                print(tabela.round(4).to_string(index=False))
+                print(f"\nResultados em {pasta_saida / 'morris'}")
+                print(f"Concluído em {time.perf_counter() - inicio:.1f} s.")
+                return 0
+            elif args.comando == "congestao":
+                from .congestao import executar_congestao
+                tabela = executar_congestao(config, pasta_saida, args.sementes, processos)
+                colunas = ["nivel", "fornecedores_ativos_fim", "elegiveis_por_consulta", "hipotese",
+                           "comparacao", "diferenca_media", "sustentada"]
+                print(tabela[colunas].round(4).to_string(index=False))
+                print(f"\nResultados em {pasta_saida / 'congestao'}")
                 print(f"Concluído em {time.perf_counter() - inicio:.1f} s.")
                 return 0
             elif args.comando == "piloto":

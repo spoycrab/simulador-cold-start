@@ -55,7 +55,10 @@ class ParametrosSimulacao:
     tau: float = 5.0                      # [hipótese]
     u0: float = 2.5                       # [hipótese] utilidade de não contratar
     p_review: float = 0.7                 # [hipótese]
-    sigma: float = 0.10                   # [hipótese]
+    sigma: float = 0.10                   # [hipótese] ruído de cada avaliação (nota), em torno de q
+    # Qualidade percebida pelo cliente: q_i + a_i + e_ui (as notas e o NDCG continuam usando q_i)
+    sigma_atratividade: float = 0.0       # [hipótese] desvio de a_i, fixo por prestador, independente de q
+    sigma_percepcao: float = 0.0          # [hipótese] desvio de e_ui, sorteado a cada consulta e posição
     p_atraso: float = 0.5                 # [projeto]
 
     # Políticas [projeto]
@@ -195,6 +198,8 @@ def carregar_parametros(config: dict, pasta_resultados: str | Path,
         gamma=float(proj["escolha"]["gamma"]), tau=float(proj["escolha"]["tau"]),
         u0=float(proj["escolha"]["u0"]),
         p_review=float(proj["p_review"]), sigma=float(proj["sigma_ruido"]),
+        sigma_atratividade=float(proj["escolha"].get("sigma_atratividade", 0.0)),
+        sigma_percepcao=float(proj["escolha"].get("sigma_percepcao", 0.0)),
         p_atraso=float(sim["prob_atraso_avaliacao"]),
         C_bayes=float(proj["C_bayes"]), kappa=float(proj["kappa_priori"]),
         rho=float(politica_d["rho"]), posicoes_reservadas=tuple(politica_d["posicoes_reservadas"]),

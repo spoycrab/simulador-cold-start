@@ -46,6 +46,10 @@ projeto:
   escolha:
     gamma: 0.6                   # viés de posição: p_k = min(1, gamma / log2(1 + k))
     tau: 5.0                     # sensibilidade da escolha logit à utilidade
+    # Qualidade percebida pelo cliente: q_i + a_i + e_ui (notas e NDCG continuam usando q_i).
+    # Com os dois desvios em 0, o modelo é idêntico à versão anterior (escolha pela qualidade latente).
+    sigma_atratividade: 0.15     # a_i ~ N(0, 0,15): atratividade fixa do prestador, independente de q (hipótese)
+    sigma_percepcao: 0.10        # e_ui ~ N(0, 0,10): ruído de percepção a cada consulta e posição (hipótese)
     u0: 2.5                      # utilidade de não contratar (hipótese): igual à de um
                                  # fornecedor mediano (tau x 0,5)
   clientes_por_rodada: null      # demanda: calibrada na etapa 2 (null = usar a calibração)
@@ -79,6 +83,32 @@ simulacao:
     meia_largura_max_ndcg: 0.005  # rodadas extras se a meia largura do IC95 exceder estes valores
     meia_largura_max_rmst: 0.25
 
+morris:                          # sensibilidade global (principal): todos os parâmetros variam juntos
+  trajetorias: 10
+  niveis: 4                      # níveis da grade por parâmetro; passo = 2/3 da faixa
+  sementes: 3                    # sementes por ponto (as mesmas em todos os pontos)
+  semente_desenho: 20261109      # sorteio das trajetórias
+  parametros:                    # faixas = as da análise de um parâmetro por vez
+    taxa_entrada_mensal: {atributo: taxa_entrada, min: 0.005, max: 0.020}
+    churn_mensal:        {atributo: churn, min: 0.01, max: 0.04}
+    demanda_relativa:    {atributo: clientes_por_rodada, min: 0.75, max: 1.25, relativo: true}
+    compatibilidade_relativa: {atributo: compatibilidade, min: 0.75, max: 1.25, relativo: true}
+    gamma:               {atributo: gamma, min: 0.4, max: 0.8}
+    tau:                 {atributo: tau, min: 2.0, max: 10.0}
+    u0:                  {atributo: u0, min: 1.5, max: 3.5}
+    p_review:            {atributo: p_review, min: 0.5, max: 0.9}
+    sigma_ruido:         {atributo: sigma, min: 0.05, max: 0.20}
+    sigma_atratividade:  {atributo: sigma_atratividade, min: 0.0, max: 0.30}
+    sigma_percepcao:     {atributo: sigma_percepcao, min: 0.0, max: 0.20}
+    kappa_priori:        {atributo: kappa, min: 1.0, max: 5.0}
+
+congestao:                       # níveis de congestão (entrada x saída de fornecedores)
+  sementes: 30
+  niveis:
+    baixa: {taxa_entrada_mensal: 0.010, churn_mensal: 0.03}   # o mercado encolhe
+    media: {}                                                  # valores do cenário central
+    alta:  {taxa_entrada_mensal: 0.020, churn_mensal: 0.01}   # o mercado cresce
+
 protocolo:
   delta_nao_inferioridade: 0.02  # margem para NDCG@10 (pré-registrada)
   comparacoes_primarias:
@@ -94,13 +124,15 @@ protocolo:
 
 sensibilidade:
   taxa_entrada_mensal: [0.005, 0.010, 0.015, 0.020]
-  churn_mensal: [0.00, 0.01, 0.02, 0.03, 0.04]
+  churn_mensal: [0.01, 0.02, 0.03, 0.04]       # 0% retirado: o mercado cresce sem limite
   delta_nao_inferioridade: [0.01, 0.02, 0.05]
   gamma: [0.4, 0.6, 0.8]
   tau: [2.0, 5.0, 10.0]
   u0: [1.5, 2.5, 3.5]
   p_review: [0.5, 0.7, 0.9]
   sigma_ruido: [0.05, 0.10, 0.20]
+  sigma_atratividade: [0.0, 0.10, 0.15, 0.30]
+  sigma_percepcao: [0.0, 0.10, 0.20]
   kappa_priori: [1, 2, 5]
   rho: [0.1, 0.2, 0.3]
   janela_novidade_w: [6, 12, 18]

@@ -42,6 +42,8 @@ from .saidas import salvar_tabela
 
 ALVO_VOLUME = "avaliacoes_por_fornecedor_mes"
 ALVO_SEM_AVAL = "prop_sem_avaliacao_coorte_12_23m"   # padrão; configurável no YAML
+# o simulador anda em meses inteiros: medianas em frações de mês não são comparáveis
+NAO_COMPARAVEIS_RESOLUCAO = {"mediana_meses_ate_1a_avaliacao_coorte_12_23m"}
 SEMENTE_CALIBRACAO = 10_000   # sementes de calibração e validação não se repetem
 SEMENTE_VALIDACAO = 20_000
 SEMENTE_PILOTO = 30_000
@@ -149,8 +151,23 @@ def calibrar_simulador(config: dict, pasta_resultados: str | Path, processos: in
               f"sem avaliação = {m[chave_f]:.3f}")
         if abs(m[chave_f] - alvo_sem) <= tol_sem:
             break
+    # salvaguarda: f na borda da grade ou poucos elegíveis por consulta indicam mercado degenerado
+    grade_f = sorted(float(x) for x in grade)
+    f_esc = float(escolhido["compatibilidade"])
+    por_faixa = base.N0 / base.n_faixas
+    elegiveis = f_esc * por_faixa
+    avisos = []
+    if f_esc <= grade_f[0] * 1.0001 or f_esc >= grade_f[-1] * 0.9999:
+        avisos.append(f"f = {f_esc:.4g} está na borda da grade {grade_f}: amplie a grade.")
+    if elegiveis < base.K:
+        avisos.append(f"Cerca de {elegiveis:.1f} fornecedores compatíveis por consulta (menos que "
+                      f"K = {base.K}): o ranqueamento pesa pouco; confira antes do experimento.")
+    for aviso in avisos:
+        print("  AVISO: " + aviso)
     resultado = {
         "escolhido": escolhido,
+        "elegiveis_por_consulta_aprox": elegiveis,
+        "avisos": avisos,
         "alvos": {ALVO_VOLUME: alvo_volume, chave_f: alvo_sem},
         "alvo_compatibilidade": chave_f,
         "curva_identificacao": curva,
@@ -158,6 +175,8 @@ def calibrar_simulador(config: dict, pasta_resultados: str | Path, processos: in
         "sementes": sementes, "rapido": rapido,
         "politica_referencia": base.politica_referencia,
         "hipoteses_fixas": {"u0": base.u0, "tau": base.tau, "gamma": base.gamma,
+                            "sigma_atratividade": base.sigma_atratividade,
+                            "sigma_percepcao": base.sigma_percepcao,
                             "p_review": base.p_review, "churn": base.churn,
                             "capacidade": base.capacidade},
         "segundos": round(time.perf_counter() - inicio, 1),
@@ -203,8 +222,10 @@ def validar(config: dict, pasta_resultados: str | Path, processos: int) -> pd.Da
             continue
         if nome in usados:
             papel = "calibração"
+        elif nome in NAO_COMPARAVEIS_RESOLUCAO:
+            papel = "referência (não comparável)"
         elif item.get("comparavel", True):
-            papel = "validação"
+            papel = "verificação interna"
         else:
             papel = "referência (não comparável)"
         valores = np.array([m[nome] for m in lista])
@@ -212,13 +233,14 @@ def validar(config: dict, pasta_resultados: str | Path, processos: int) -> pd.Da
         hw = meia_largura_ic95(valores)
         linhas.append({"Momento": nome, "Papel": papel, "Dados": item["valor"],
                        "Simulado": media, "IC95 inf.": media - hw, "IC95 sup.": media + hw,
-                       "Diferença relativa (%)": 100 * (media - item["valor"]) / item["valor"]})
-    ordem = {"calibração": 0, "validação": 1, "referência (não comparável)": 2}
+                       "Erro absoluto": media - item["valor"],
+                       "Erro relativo (%)": 100 * (media - item["valor"]) / item["valor"]})
+    ordem = {"calibração": 0, "verificação interna": 1, "referência (não comparável)": 2}
     linhas.sort(key=lambda l: ordem[l["Papel"]])
     tabela = pd.DataFrame(linhas)
     salvar_tabela(tabela, pasta_resultados / "simulacao", "validacao",
-                  f"Momentos observados e simulados (política de referência {p.politica_referencia}, "
-                  "parâmetros calibrados)",
+                  f"Verificação interna: momentos observados e simulados (política de referência "
+                  f"{p.politica_referencia}, parâmetros calibrados, {n} sementes)",
                   "tab:validacao", casas=3)
     return tabela
 

@@ -69,6 +69,9 @@ def validar_config(config: dict) -> None:
     for nome in ("p_review", "churn_mensal", "percentil_alta_qualidade"):
         if not (0 <= projeto[nome] <= 1):
             erros.append(f"projeto.{nome} deve estar entre 0 e 1.")
+    for nome in ("sigma_atratividade", "sigma_percepcao"):
+        if projeto["escolha"].get(nome, 0.0) < 0:
+            erros.append(f"projeto.escolha.{nome} não pode ser negativo.")
     if projeto["sigma_ruido"] <= 0:
         erros.append("projeto.sigma_ruido deve ser positivo.")
     if projeto["n_fornecedores_amostra"] <= 0:
@@ -103,6 +106,13 @@ def validar_config(config: dict) -> None:
             erros.append("simulacao.consultas_por_lote e aquecimento devem ser positivos.")
         if any(not (0 < f <= 1) for f in sim["calibracao"]["grade_compatibilidade"]):
             erros.append("simulacao.calibracao.grade_compatibilidade deve ter valores em (0, 1].")
+    morris = config.get("morris")
+    if morris is not None:
+        if int(morris["niveis"]) < 2 or int(morris["niveis"]) % 2:
+            erros.append("morris.niveis deve ser par e pelo menos 2.")
+        for nome, spec in morris["parametros"].items():
+            if not spec["min"] < spec["max"]:
+                erros.append(f"morris.parametros.{nome}: min deve ser menor que max.")
     if calibracao["n_faixas_preco"] < 1:
         erros.append("calibracao.n_faixas_preco deve ser pelo menos 1.")
 
